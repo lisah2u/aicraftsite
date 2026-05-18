@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('knowledge', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title={`${post.data.title} — AiCraft Knowledge`}
+  description={post.data.summary}
+>
+  <article class="article">
+    <!-- Article header -->
+    <header class="article-header section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/knowledge">← Knowledge</a>
+        </nav>
+
+        <div class="article-meta">
+          <time datetime={post.data.date.toISOString().slice(0, 10)}>
+            {formattedDate}
+          </time>
+          {post.data.tags.map(tag => (
+            <span class="meta-tag">{tag}</span>
+          ))}
+        </div>
+
+        <h1 class="article-title">{post.data.title}</h1>
+        <p class="article-summary">{post.data.summary}</p>
+      </div>
+    </header>
+
+    <!-- Article body -->
+    <div class="article-body section">
+      <div class="container">
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer CTA -->
+    <footer class="article-footer section">
+      <div class="container article-footer__inner">
+        <div>
+          <p class="eyebrow">AiCraft</p>
+          <h2 class="article-footer__heading">Want to talk through your situation?</h2>
+          <p class="article-footer__body">
+            If this post raised questions about your own data or workflows, a short conversation
+            is usually the best next step.
+          </p>
+        </div>
+        <div class="article-footer__actions">
+          <a href="/contact" class="button button--primary">Get in touch</a>
+          <a href="/knowledge" class="button button--secondary">More articles</a>
+        </div>
+      </div>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .article-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: clamp(40px, 6vw, 72px);
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+    opacity: 1 !important;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-ink);
+    opacity: 1 !important;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .article-meta time {
+    font-size: 0.8125rem;
+    color: var(--color-ink-soft);
+    font-weight: 500;
+  }
+
+  .meta-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-ink-soft);
+    background: rgba(23, 23, 23, 0.07);
+    padding: 0.2rem 0.625rem;
+    border-radius: 100px;
+  }
+
+  .article-title {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.875rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    max-width: 22ch;
+  }
+
+  .article-summary {
+    margin: 0;
+    font-size: 1.125rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+    max-width: 52ch;
+  }
+
+  /* prose styles */
+  .prose {
+    max-width: 68ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-ink-soft);
+  }
+
+  .prose :global(h2) {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    color: var(--color-ink);
+    margin: 2.5rem 0 1rem;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 1.25rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose :global(strong) {
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .prose :global(a) {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color var(--duration-fast) var(--ease-standard);
+    opacity: 1 !important;
+  }
+
+  .prose :global(a:hover) {
+    text-decoration-color: var(--color-ink);
+    opacity: 1 !important;
+  }
+
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--color-accent);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+  }
+
+  .prose :global(code) {
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.875em;
+    background: rgba(23, 23, 23, 0.07);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+
+  /* article footer */
+  .article-footer {
+    background: rgba(255, 255, 255, 0.35);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .article-footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .article-footer__heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  }
+
+  .article-footer__body {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-ink-soft);
+    max-width: 44ch;
+    line-height: 1.65;
+  }
+
+  .article-footer__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .article-footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

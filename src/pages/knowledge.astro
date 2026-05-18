@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import KnowledgeCard from '../components/KnowledgeCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('knowledge', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+---
+
+<Layout
+  title="Knowledge — AiCraft"
+  description="Practical writing on data, AI, NLP, and building tools for small organizations. Plain language, no hype."
+>
+  <!-- Header -->
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">Knowledge</p>
+      <h1 class="page-hero__title">Practical insights</h1>
+      <p class="page-hero__lead">
+        Short pieces for teams making real decisions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="section articles-section">
+    <div class="container">
+      {allTags.length > 1 && (
+        <div class="tags-bar" aria-label="Topics">
+          <span class="tags-label">Topics:</span>
+          {allTags.map(tag => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <div class="articles-grid">
+        {posts.map(post => (
+          <KnowledgeCard
+            title={post.data.title}
+            date={post.data.date}
+            summary={post.data.summary}
+            tags={post.data.tags}
+            href={`/knowledge/${post.slug}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Prompt to suggest topics -->
+  <section class="section suggest-section">
+    <div class="container suggest-inner">
+      <p class="eyebrow">Got a question?</p>
+      <h2 class="suggest-heading">Something you'd like me to write about?</h2>
+      <p class="suggest-body">
+        If there's a topic related to data, AI, or web tools for small organizations that you'd
+        like explained in plain language, I'd love to hear it.
+      </p>
+      <a href="/contact" class="button button--secondary">Send a suggestion</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-hero__title {
+    margin: 0 0 1.25rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .page-hero__lead {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    max-width: 52ch;
+    line-height: 1.7;
+  }
+
+  .tags-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tags-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin-right: 0.25rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    background: rgba(23, 23, 23, 0.07);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .suggest-section {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .suggest-inner {
+    max-width: 560px;
+  }
+
+  .suggest-heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+  }
+
+  .suggest-body {
+    margin: 0 0 1.75rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .articles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 580px) {
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

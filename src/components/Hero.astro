@@ -1,0 +1,83 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  primaryCta?: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+  subtext?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  primaryCta,
+  secondaryCta,
+  subtext,
+} = Astro.props;
+---
+
+<section class="hero section">
+  <div class="container hero__inner">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1 class="hero__title">{title}</h1>
+    {subtitle && <p class="hero__body">{subtitle}</p>}
+    {(primaryCta || secondaryCta) && (
+      <div class="hero__actions">
+        {primaryCta && (
+          <a href={primaryCta.href} class="button button--primary">
+            {primaryCta.text}
+          </a>
+        )}
+        {secondaryCta && (
+          <a href={secondaryCta.href} class="button button--secondary">
+            {secondaryCta.text}
+          </a>
+        )}
+      </div>
+    )}
+    {subtext && <p class="hero__subtext">{subtext}</p>}
+  </div>
+</section>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero__inner {
+    max-width: 900px;
+  }
+
+  .hero__title {
+    margin: 0;
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 0.97;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+    max-width: 14ch;
+  }
+
+  .hero__body {
+    max-width: 44rem;
+    margin: 2rem 0 0;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--color-ink-soft);
+    line-height: 1.65;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 2.25rem;
+  }
+
+  .hero__subtext {
+    margin: 1rem 0 0;
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+  }
+</style>

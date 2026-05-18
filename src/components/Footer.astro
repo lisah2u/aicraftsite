@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/aicraft-logo/logo-trimmed.png';
+
+const year = new Date().getFullYear();
+
+const services = [
+  'AI evaluation & team augmentation',
+  'AI agents & semantic search',
+  'Dashboards & decision tools',
+  'Workflow automation',
+  'Data cleanup & engineering',
+  'Websites & data integration',
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" class="footer-logo" aria-label="AiCraft — home">
+        <Image src={logo} alt="Ai Craft" height={32} densities={[1, 2]} quality={90} class="footer-logo__img" loading="lazy" decoding="async" />
+      </a>
+      <p class="footer-tagline">AI & data tools for small organizations.</p>
+      <p class="footer-copy">&copy; {year} AiCraft. All rights reserved.</p>
+    </div>
+
+    <div class="site-footer__cols">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__label">Navigation</p>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/knowledge">Knowledge</a>
+        <a href="/contact">Contact</a>
+      </nav>
+
+      <div class="footer-services">
+        <p class="footer-nav__label">What I do</p>
+        {services.map(s => <span>{s}</span>)}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: 3.5rem;
+    background: var(--color-bg);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    text-decoration: none;
+    opacity: 1 !important;
+  }
+
+  .footer-logo__img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .footer-tagline {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
+    max-width: 28ch;
+  }
+
+  .footer-copy {
+    margin: 1.5rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-ink-soft);
+  }
+
+  .site-footer__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .footer-nav__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin: 0 0 0.5rem;
+  }
+
+  .footer-nav a {
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+    opacity: 1 !important;
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-ink);
+    opacity: 1 !important;
+  }
+
+  .footer-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-services span {
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+  }
+
+  @media (max-width: 720px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .site-footer__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-footer__cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

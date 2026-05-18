@@ -1,0 +1,469 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const buckets = [
+  {
+    id: 'strategy',
+    number: '01',
+    title: 'Data & AI Strategy',
+    intro:
+      "Frame the right problem before reaching for a solution. Not every challenge calls for AI—sometimes better structure, a clearer process, or a simpler tool is the right answer. This work starts by understanding what your team is actually trying to accomplish, who will use the output, and what \"working well\" means in practice.",
+    bestFor: 'Teams unsure whether AI is even the right answer, evaluating tools, or frustrated by solutions that don\'t fit their workflow',
+    typicalDeliverable: 'A written scope + 60-minute walkthrough of your best options',
+    services: [
+      'User needs assessment and stakeholder interviews to ground every recommendation in real workflows',
+      'Analysis of alternatives (e.g, AI, automation, or process change) so the solution fits the actual problem',
+      'Problem framing and scoping for data & automation projects',
+      'AI agent design grounded in your domain, documents, and policies',
+      'Semantic search across records, websites, and small databases',
+      'Information architecture for archives, programs, and complex content',
+      'Evaluation design: defining what "good" looks like before anything is built',
+      'Technical AI program management augmentation for your team',
+    ],
+  },
+  {
+    id: 'dashboards',
+    number: '02',
+    title: 'Dashboards & Decision Tools',
+    intro:
+      'Lightweight dashboards built around the questions your team actually asks. Not generic BI, rather focused views that replace manual spreadsheet reporting and help you explain the story behind your numbers.',
+    bestFor: 'Teams spending hours each week on manual reporting and spreadsheet exports',
+    typicalDeliverable: 'One working dashboard, delivered within weeks',
+    services: [
+      'Simple dashboards for grants, donors, programs, and operations',
+      'Views that connect data across systems (people, places, events)',
+      'Visual summaries for board presentations, councils, and funders',
+      'Reports that replace hours of manual spreadsheet work each week',
+      'Data cleanup and structuring to make results trustworthy',
+    ],
+  },
+  {
+    id: 'automation',
+    number: '03',
+    title: 'Automation & Data Engineering',
+    intro:
+      'Reduce copy-paste work and make your records reliable. AI-driven automation wrapped in human-designed control gates... so you save time without giving up oversight.',
+    bestFor: 'Teams doing repetitive tagging, data entry, or record cleanup by hand',
+    typicalDeliverable: 'A working automation for one high-friction process',
+    services: [
+      'AI-powered tagging, summarizing, and routing for incoming information',
+      'Data cleanup and pipelines that keep key fields consistent over time',
+      'Form-to-spreadsheet and form-to-CRM integrations',
+      'Lightweight CRM setup for small organizations',
+      'Version control and simple testing so changes are safe to deploy',
+    ],
+  },
+  {
+    id: 'web',
+    number: '04',
+    title: 'Connected Web Presence',
+    intro:
+      'Your website as a front door to your data and services is not a silo. Sites that connect to your internal records so visitors can search, browse, and submit without staff re-typing everything.',
+    bestFor: 'Organizations whose website is hard to update or disconnected from their data',
+    typicalDeliverable: 'A fast, low-maintenance site with integrated forms and on-page search',
+    services: [
+      'Fast, low-maintenance sites designed for performance, not platform lock-in',
+      'Navigation and content structured around real questions, not your org chart',
+      'Web forms that feed clean data into your spreadsheets or tools',
+      'AI-enhanced features: on-page search, summaries, simple Q&A',
+      'Lightweight integrations so your site, email lists, and dashboards stay in sync',
+    ],
+  },
+];
+
+const pilots = [
+  {
+    title: '"Answer my FAQs" pilot',
+    description:
+      'A customized AI agent that handles a narrow set of common questions using your documents and website content.',
+  },
+  {
+    title: '"One dashboard that actually helps"',
+    description:
+      'A focused view for a single program, office, or set of records—built and delivered in weeks.',
+  },
+  {
+    title: '"Untangle this dataset"',
+    description:
+      'A cleanup and structure pass on a messy but important spreadsheet or small database.',
+  },
+];
+---
+
+<Layout
+  title="Services — AiCraft"
+  description="Data & AI strategy, dashboards, automation, and connected web presence for small businesses, nonprofits, and local government teams."
+>
+  <!-- Page hero -->
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">Services</p>
+      <h1 class="page-hero__title">Smarter workflows, better decisions.</h1>
+      <div class="hero-contrast" aria-label="Before and after working with AiCraft">
+        <span class="contrast-label">Before</span>
+        <span aria-hidden="true"></span>
+        <span class="contrast-label">After</span>
+        <span class="contrast-before">Manual reporting</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Automated views</span>
+        <span class="contrast-before">Buried records</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Natural language search</span>
+        <span class="contrast-before">Copy-paste work</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Reliable pipelines</span>
+        <span class="contrast-before">Decisions by feel</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Data-backed confidence</span>
+        <span class="contrast-before">Legacy data silos</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Future-proof systems</span>
+        <span class="contrast-before">Manual, end to end</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">AI-assisted, human-led</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service buckets -->
+  <section class="section buckets-section">
+    <div class="container">
+      {buckets.map((bucket) => (
+        <div class="bucket" id={bucket.id}>
+          <div class="bucket__header">
+            <span class="bucket__number">{bucket.number}</span>
+            <h2 class="bucket__title">{bucket.title}</h2>
+          </div>
+          <div class="bucket__body">
+            <p class="bucket__intro">{bucket.intro}</p>
+            <div class="bucket__meta">
+              <div class="bucket__meta-item">
+                <span class="bucket__meta-label">Best for</span>
+                <span class="bucket__meta-value">{bucket.bestFor}</span>
+              </div>
+              <div class="bucket__meta-item">
+                <span class="bucket__meta-label">Typical first deliverable</span>
+                <span class="bucket__meta-value">{bucket.typicalDeliverable}</span>
+              </div>
+            </div>
+            <ul class="bucket__list">
+              {bucket.services.map((item) => <li>{item}</li>)}
+            </ul>
+            <a href="/contact" class="bucket__cta">Discuss this type of project →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Pilot projects -->
+  <section class="section pilots-section">
+    <div class="container">
+      <div class="pilots-heading">
+        <p class="eyebrow">Getting started</p>
+        <h2 class="pilots-title">Small, focused projects to start</h2>
+        <p class="pilots-intro">
+          Every engagement starts small: we pick one workflow, one report, or one high-friction
+          question you want answered faster. Here are three common entry points.
+        </p>
+      </div>
+      <div class="pilots-grid">
+        {pilots.map((pilot) => (
+          <div class="pilot-card">
+            <h3 class="pilot-card__title">{pilot.title}</h3>
+            <p class="pilot-card__description">{pilot.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section services-cta">
+    <div class="container services-cta__inner">
+      <div>
+        <h2 class="services-cta__heading">Not sure where to start?</h2>
+        <p class="services-cta__body">
+          I partner with 2–3 clients per quarter so I can go deep. A short call is usually
+          enough to identify the smallest project with the most leverage for your team.
+        </p>
+      </div>
+      <a href="/contact" class="button button--primary">Start a project</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-hero__title {
+    margin: 0 0 2rem;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    max-width: 18ch;
+  }
+
+  /* before / after contrast grid */
+  .hero-contrast {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.625rem 2rem;
+    max-width: 480px;
+  }
+
+  .contrast-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0.125rem;
+  }
+
+  .contrast-before {
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    opacity: 0.65;
+    line-height: 1.4;
+  }
+
+  .contrast-after {
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .contrast-sep {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* buckets */
+  .buckets-section {
+    padding-top: clamp(48px, 8vw, 96px);
+  }
+
+  .bucket {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    padding-block: 3rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .bucket:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .bucket__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bucket__number {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-soft);
+  }
+
+  .bucket__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.15;
+    color: var(--color-ink);
+  }
+
+  .bucket__intro {
+    margin: 0 0 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .bucket__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.875rem 1rem;
+    background: rgba(217, 170, 82, 0.06);
+    border-left: 2px solid var(--color-accent);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .bucket__meta-item {
+    display: flex;
+    gap: 0.625rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .bucket__meta-label {
+    font-size: 0.725rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .bucket__meta-value {
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    line-height: 1.5;
+  }
+
+  .bucket__list {
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .bucket__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    line-height: 1.55;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid rgba(216, 210, 200, 0.5);
+  }
+
+  .bucket__list li::before {
+    content: '—';
+    color: var(--color-accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .bucket__cta {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    opacity: 1 !important;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .bucket__cta:hover {
+    opacity: 0.65 !important;
+  }
+
+  /* pilots */
+  .pilots-section {
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .pilots-heading {
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .pilots-title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.12;
+  }
+
+  .pilots-intro {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .pilots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .pilot-card {
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .pilot-card__title {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-ink);
+  }
+
+  .pilot-card__description {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    line-height: 1.65;
+  }
+
+  /* CTA */
+  .services-cta {
+    background: var(--color-panel-dark);
+    color: #ffffff;
+  }
+
+  .services-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .services-cta__heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: #ffffff;
+  }
+
+  .services-cta__body {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 48ch;
+    line-height: 1.65;
+  }
+
+  .services-cta .button--primary {
+    background: var(--color-accent);
+    color: var(--color-panel-dark);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 860px) {
+    .bucket {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .pilots-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-cta__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,11 +1,956 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import KnowledgeCard from '../components/KnowledgeCard.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const allPosts = await getCollection('knowledge', ({ data }) => !data.draft);
+const recentPosts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const services = [
+  {
+    number: '01',
+    title: 'Data & AI Strategy',
+    description:
+      "Frame the right problem before building anything. I help you identify what you actually need—whether that's a searchable archive, an AI assistant, or a cleaner dataset—and sketch the smallest useful solution.",
+    tags: ['Information architecture', 'AI agent design', 'Problem framing'],
+    href: '/services#strategy',
+  },
+  {
+    number: '02',
+    title: 'Dashboards & Decision Tools',
+    description:
+      'Lightweight dashboards built around the questions your team actually asks. Not generic BI—a focused view that replaces manual spreadsheet reporting and explains the story behind your numbers.',
+    tags: ['Data visualization', 'Grants & programs', 'Visual reporting'],
+    href: '/services#dashboards',
+  },
+  {
+    number: '03',
+    title: 'Automation & Data Engineering',
+    description:
+      'Reduce copy-paste work and make your numbers trustworthy. AI-driven automation for tagging, summarizing, and routing—with human-designed control gates so you save time without losing oversight.',
+    tags: ['Workflow automation', 'Data cleanup', 'Integrations'],
+    href: '/services#automation',
+  },
+  {
+    number: '04',
+    title: 'Connected Web Presence',
+    description:
+      'Your website as a live data tool—not a static brochure. Forms that write to your systems, search that answers real questions, and AI-enhanced features grounded in your own content.',
+    tags: ['Modern Web Frameworks', 'Semantic search', 'Content architecture'],
+    href: '/services#web',
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="AiCraft — AI-Powered Data Solutions for Small Organizations"
+  description="AiCraft builds intelligence-grade AI, data, and web tools for small businesses, nonprofits, and local government teams. One client at a time, clear scopes, plain language."
+>
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1 class="sr-only">Data & AI solutions for small organizations — AiCraft</h1>
+        <p class="eyebrow">Data & AI consultancy</p>
+        <p class="hero-subtitle">
+          I help small businesses, local governments, and nonprofits turn messy, underused data
+          into clear dashboards, websites, automations, and decision tools that actually fit how
+          your team works.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="button button--primary">Talk about your idea</a>
+          <a href="/services" class="button button--secondary">Explore services</a>
+        </div>
+        <p class="hero-subtext">A short call to see what's possible with your existing data.</p>
+      </div>
+
+      <div class="hero-canvas-wrap" aria-hidden="true">
+        <canvas id="hero-canvas"></canvas>
+        <span class="canvas-hint" id="canvas-hint">hover to transform</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof strip -->
+  <section class="proof-strip">
+    <div class="container proof-strip__inner">
+      <div class="proof-item">
+        <strong class="proof-item__strong">15+ years in AI & data</strong>
+        <span class="proof-item__clarifier">From enterprise intelligence to small nonprofits</span>
+      </div>
+      <div class="proof-item">
+        <strong class="proof-item__strong">Federal-grade AI systems</strong>
+        <span class="proof-item__clarifier">Enterprise knowledge retrieval & language AI</span>
+      </div>
+      <div class="proof-item">
+        <strong class="proof-item__strong">2–3 clients per quarter</strong>
+        <span class="proof-item__clarifier">One focused engagement at a time</span>
+      </div>
+      <div class="proof-item">
+        <strong class="proof-item__strong">You own everything we build</strong>
+        <span class="proof-item__clarifier">Code, data, documentation—all yours</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="section audience-section">
+    <div class="container">
+      <div class="audience-inner reveal">
+        <p class="eyebrow">Who this is for</p>
+        <h2 class="audience-heading">
+          Built for small organizations that can't hire a full data department
+        </h2>
+        <p class="audience-body">
+          If your operations live in spreadsheets, inboxes, and a simple website—but modern data,
+          AI, and automation feel out of reach—you're exactly who I work with. I build lightweight
+          tools that plug into your existing systems so you get real leverage without big platforms
+          or long contracts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services grid -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-heading-block reveal">
+        <p class="eyebrow">Services</p>
+        <h2 class="services-heading">From un-ordered data to clear decisions</h2>
+        <p class="services-subheading">
+          Together, we start small: one workflow, one report, or one decision that's painful today.
+          Then we design and build around it—using modern tooling, but explained in plain language.
+        </p>
+      </div>
+      <div class="service-grid">
+        {services.map((service, i) => (
+          <div class={`reveal reveal--delay-${i}${i === 0 ? ' service-grid__featured' : ''}`}>
+            <ServiceCard {...service} />
+          </div>
+        ))}
+      </div>
+      <div class="services-link reveal">
+        <a href="/services" class="button button--secondary">See full service details →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we work -->
+  <section class="section process-section">
+    <div class="container process-inner">
+      <div class="process-text reveal">
+        <p class="eyebrow">How we work together</p>
+        <h2 class="process-heading">A focused partner, not a big agency</h2>
+        <p class="process-body">
+          You get senior-level data science, information design, and AI expertise—but delivered
+          like a small studio: one client at a time, clear scopes, and straightforward
+          communication. No layers, no mystery.
+        </p>
+        <a href="/about" class="process-more">Learn more about me →</a>
+      </div>
+      <ol class="process-steps">
+        <li class="process-step reveal">
+          <span class="step-num">01</span>
+          <div>
+            <strong>Listen</strong>
+            <p>I clarify your goals, constraints, and current tools—before suggesting anything.</p>
+          </div>
+        </li>
+        <li class="process-step reveal">
+          <span class="step-num">02</span>
+          <div>
+            <strong>Design</strong>
+            <p>I sketch the smallest useful solution and walk you through it before we build.</p>
+          </div>
+        </li>
+        <li class="process-step reveal">
+          <span class="step-num">03</span>
+          <div>
+            <strong>Build & refine</strong>
+            <p>I implement, ship quickly, then iterate based on real use—not assumptions.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Knowledge preview -->
+  {recentPosts.length > 0 && (
+    <section class="section knowledge-section">
+      <div class="container">
+        <div class="knowledge-header reveal">
+          <div>
+            <p class="eyebrow">Knowledge</p>
+            <h2 class="knowledge-heading">Practical writing on data & AI</h2>
+          </div>
+          <a href="/knowledge" class="button button--secondary knowledge-all-link">All articles →</a>
+        </div>
+        <div class="knowledge-grid">
+          {recentPosts.map((post, i) => (
+            <div class={`reveal reveal--delay-${i}`}>
+              <KnowledgeCard
+                title={post.data.title}
+                date={post.data.date}
+                summary={post.data.summary}
+                tags={post.data.tags}
+                href={`/knowledge/${post.slug}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA band -->
+  <section class="cta-band section">
+    <div class="container cta-band__inner reveal">
+      <div>
+        <p class="eyebrow">Let's talk</p>
+        <h2 class="cta-band__heading">Ready to put your data to work?</h2>
+        <p class="cta-band__body">
+          Share a bit about your team and the decisions you're trying to improve, and I'll
+          propose a small, concrete project we can deliver in weeks—not months.
+        </p>
+      </div>
+      <a href="/contact" class="button button--primary cta-band__btn">Start a project</a>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  // ── Particle canvas animation ──────────────────────────────────────────────
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
+  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ctx = canvas.getContext('2d')!;
+
+    // Jewel-tone palette anchored to logo red #AF342D (H≈3, S≈59%, L≈43%)
+    // All colors matched in depth and richness — not neon, not pastel
+    const PALETTE = [
+      '#AF342D', '#AF342D',  // logo red (anchor, doubled)
+      '#1C52A0',             // cobalt blue
+      '#C9A01A',             // rich mustard yellow
+      '#2D8035',             // forest green
+      '#C55A1A',             // deep orange
+      '#6828A0',             // violet
+      '#A82862',             // deep rose
+      '#147A74',             // teal
+    ];
+    // Shape types: 0 circle, 1 square, 2 triangle, 3 diamond, 4 star, 5 plus
+    const SHAPE_COUNT = 6;
+    const N = 48;
+    const SPRING = 0.09;
+    const DAMP   = 0.80;
+
+    let W = 0, H = 0;
+    let shapeIndex = -1;
+    let frameCount = 0;
+
+    interface Particle {
+      x: number; y: number;
+      vx: number; vy: number;
+      tx: number; ty: number;
+      color: string; r: number;
+      shape: number;       // 0–5
+      rotation: number;
+      rotSpeed: number;
+      mode: 'scatter' | 'pending' | 'shape';
+      startFrame: number;
+    }
+
+    let particles: Particle[] = [];
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = (canvas.parentElement as HTMLElement).getBoundingClientRect();
+      W = rect.width;
+      H = rect.height;
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function initParticles() {
+      particles = Array.from({ length: N }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        tx: 0, ty: 0,
+        color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+        r: 2.5 + Math.random() * 8.5,
+        shape: Math.floor(Math.random() * SHAPE_COUNT),
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.04,
+        mode: 'scatter',
+        startFrame: 0,
+      }));
+    }
+
+    // Return N target positions (canvas px) for each shape
+    function shapeTargets(si: number): { x: number; y: number }[] {
+      const cx = W / 2, cy = H / 2;
+      const r  = Math.min(W, H) * 0.36;
+      const pts: { x: number; y: number }[] = [];
+
+      switch (si % 6) {
+        case 0: { // Circle outline
+          for (let i = 0; i < N; i++) {
+            const t = (i / N) * Math.PI * 2;
+            pts.push({ x: cx + r * Math.cos(t), y: cy + r * Math.sin(t) });
+          }
+          break;
+        }
+        case 1: { // Equilateral triangle — filled with even rows
+          const top = { x: cx, y: cy - r * 1.12 };
+          const bl  = { x: cx - r * 0.97, y: cy + r * 0.56 };
+          const br  = { x: cx + r * 0.97, y: cy + r * 0.56 };
+          // Build row-by-row so distribution looks intentional
+          const rows = 8;
+          let placed = 0;
+          outer: for (let row = 0; row < rows; row++) {
+            const t = (row + 0.5) / rows;
+            const leftX  = top.x + (bl.x - top.x) * t;
+            const rightX = top.x + (br.x - top.x) * t;
+            const y = top.y + (bl.y - top.y) * t;
+            const count = Math.round(1 + (N - 1) * (row / (rows - 1)));
+            const slots = Math.min(count, N - placed);
+            for (let col = 0; col < slots && placed < N; col++) {
+              const f = slots > 1 ? col / (slots - 1) : 0.5;
+              pts.push({ x: leftX + (rightX - leftX) * f, y });
+              placed++;
+              if (placed >= N) break outer;
+            }
+          }
+          // Fill any remainder
+          while (pts.length < N) pts.push({ x: cx, y: cy });
+          break;
+        }
+        case 2: { // Regular hexagon outline
+          for (let i = 0; i < N; i++) {
+            const t       = (i / N) * Math.PI * 2;
+            const sides   = 6;
+            const sideI   = Math.floor(t / (Math.PI * 2 / sides));
+            const t0      = sideI       * (Math.PI * 2 / sides) - Math.PI / 2;
+            const t1      = (sideI + 1) * (Math.PI * 2 / sides) - Math.PI / 2;
+            const lerp    = (t - sideI * (Math.PI * 2 / sides)) / (Math.PI * 2 / sides);
+            pts.push({
+              x: (cx + r * Math.cos(t0)) + ((cx + r * Math.cos(t1)) - (cx + r * Math.cos(t0))) * lerp,
+              y: (cy + r * Math.sin(t0)) + ((cy + r * Math.sin(t1)) - (cy + r * Math.sin(t0))) * lerp,
+            });
+          }
+          break;
+        }
+        case 3: { // Diamond (rhombus) outline
+          // 4 sides, 12 particles each
+          const perSide = Math.ceil(N / 4);
+          const verts = [
+            { x: cx,         y: cy - r * 1.1 },
+            { x: cx + r * 0.8, y: cy          },
+            { x: cx,         y: cy + r * 1.1 },
+            { x: cx - r * 0.8, y: cy          },
+          ];
+          for (let side = 0; side < 4 && pts.length < N; side++) {
+            const a = verts[side], b = verts[(side + 1) % 4];
+            for (let j = 0; j < perSide && pts.length < N; j++) {
+              const f = j / perSide;
+              pts.push({ x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f });
+            }
+          }
+          break;
+        }
+        case 4: { // 6-point star outline
+          const outer = r, inner = r * 0.42;
+          const sides = 12;
+          for (let i = 0; i < N; i++) {
+            const t     = (i / N) * Math.PI * 2;
+            const sideI = Math.floor(t / (Math.PI * 2 / sides));
+            const t0    = sideI       * (Math.PI * 2 / sides) - Math.PI / 2;
+            const t1    = (sideI + 1) * (Math.PI * 2 / sides) - Math.PI / 2;
+            const lerp  = (t - sideI * (Math.PI * 2 / sides)) / (Math.PI * 2 / sides);
+            const r0    = sideI % 2 === 0 ? outer : inner;
+            const r1    = (sideI + 1) % 2 === 0 ? outer : inner;
+            pts.push({
+              x: (cx + r0 * Math.cos(t0)) + ((cx + r1 * Math.cos(t1)) - (cx + r0 * Math.cos(t0))) * lerp,
+              y: (cy + r0 * Math.sin(t0)) + ((cy + r1 * Math.sin(t1)) - (cy + r0 * Math.sin(t0))) * lerp,
+            });
+          }
+          break;
+        }
+        case 5: { // Regular grid 8 × 6
+          const cols = 8, rows = 6;
+          for (let i = 0; i < N; i++) {
+            const col = i % cols, row = Math.floor(i / cols);
+            pts.push({
+              x: cx - r * 0.9 + (col / (cols - 1)) * r * 1.8,
+              y: cy - r * 0.65 + (row / (rows - 1)) * r * 1.3,
+            });
+          }
+          break;
+        }
+      }
+      return pts;
+    }
+
+    function formShape(si: number) {
+      shapeIndex = si;
+      const targets = shapeTargets(si);
+      // Stagger: each particle begins moving 2 frames after the previous
+      particles.forEach((p, i) => {
+        p.tx = targets[i].x;
+        p.ty = targets[i].y;
+        p.mode = 'pending';
+        p.startFrame = frameCount + i * 2;
+      });
+    }
+
+    function update() {
+      frameCount++;
+      const pad = 10;
+      particles.forEach(p => {
+        if (p.mode === 'pending' && frameCount >= p.startFrame) p.mode = 'shape';
+
+        if (p.mode === 'scatter') {
+          p.vx += (Math.random() - 0.5) * 0.07;
+          p.vy += (Math.random() - 0.5) * 0.07;
+          const speed = Math.hypot(p.vx, p.vy);
+          if (speed > 0.85) { p.vx *= 0.85 / speed; p.vy *= 0.85 / speed; }
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < pad)     { p.x = pad;     p.vx =  Math.abs(p.vx) * 0.6; }
+          if (p.x > W - pad) { p.x = W - pad; p.vx = -Math.abs(p.vx) * 0.6; }
+          if (p.y < pad)     { p.y = pad;     p.vy =  Math.abs(p.vy) * 0.6; }
+          if (p.y > H - pad) { p.y = H - pad; p.vy = -Math.abs(p.vy) * 0.6; }
+          p.rotation += p.rotSpeed;
+        } else if (p.mode === 'shape') {
+          p.vx = (p.vx + (p.tx - p.x) * SPRING) * DAMP;
+          p.vy = (p.vy + (p.ty - p.y) * SPRING) * DAMP;
+          p.x += p.vx;
+          p.y += p.vy;
+          // Slowly spin down once settled
+          p.rotSpeed *= 0.97;
+          p.rotation += p.rotSpeed;
+        }
+      });
+    }
+
+    function drawParticle(p: Particle) {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.fillStyle = p.color;
+      const r = p.r;
+
+      switch (p.shape) {
+        case 0: // circle
+          ctx.beginPath();
+          ctx.arc(0, 0, r, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+        case 1: // square
+          ctx.fillRect(-r * 0.88, -r * 0.88, r * 1.76, r * 1.76);
+          break;
+        case 2: // equilateral triangle
+          ctx.beginPath();
+          ctx.moveTo(0, -r * 1.15);
+          ctx.lineTo( r,  r * 0.58);
+          ctx.lineTo(-r,  r * 0.58);
+          ctx.closePath();
+          ctx.fill();
+          break;
+        case 3: // diamond
+          ctx.beginPath();
+          ctx.moveTo(0,  -r * 1.25);
+          ctx.lineTo( r * 0.88, 0);
+          ctx.lineTo(0,   r * 1.25);
+          ctx.lineTo(-r * 0.88, 0);
+          ctx.closePath();
+          ctx.fill();
+          break;
+        case 4: // 4-point star
+          ctx.beginPath();
+          for (let i = 0; i < 8; i++) {
+            const a   = (i / 8) * Math.PI * 2 - Math.PI / 2;
+            const rad = i % 2 === 0 ? r * 1.3 : r * 0.48;
+            const x = Math.cos(a) * rad, y = Math.sin(a) * rad;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          ctx.fill();
+          break;
+        case 5: // plus / cross
+          ctx.fillRect(-r * 0.38, -r * 1.1, r * 0.76, r * 2.2);
+          ctx.fillRect(-r * 1.1,  -r * 0.38, r * 2.2,  r * 0.76);
+          break;
+      }
+      ctx.restore();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(drawParticle);
+    }
+
+    let animId = 0;
+    let animStarted = false;
+
+    function loop() {
+      update();
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    // Init via ResizeObserver — size canvas and draw one static frame; don't animate yet
+    let initialized = false;
+    const ro = new ResizeObserver(() => {
+      resize();
+      if (!initialized) {
+        initialized = true;
+        initParticles();
+        draw(); // static snapshot — no loop until interaction
+        const hint = document.getElementById('canvas-hint');
+        if (hint) hint.classList.add('visible');
+      } else if (animStarted && shapeIndex >= 0) {
+        formShape(shapeIndex); // recompute shape targets after resize
+      } else if (!animStarted) {
+        draw(); // redraw static snapshot after resize
+      }
+    });
+    ro.observe(canvas.parentElement as Element);
+
+    // First interaction starts the loop; every subsequent one cycles shapes
+    let nextShape = 0;
+    let cooldown = false;
+
+    function handleInteraction() {
+      if (!animStarted) {
+        animStarted = true;
+        loop();
+      }
+      if (cooldown) return;
+      cooldown = true;
+      const hint = document.getElementById('canvas-hint');
+      if (hint) hint.style.opacity = '0';
+      formShape(nextShape);
+      nextShape = (nextShape + 1) % 6;
+      setTimeout(() => { cooldown = false; }, 500);
+    }
+
+    canvas.addEventListener('mouseenter', handleInteraction);
+    canvas.addEventListener('touchstart', handleInteraction, { passive: true });
+  }
+
+  // ── Scroll reveal ──────────────────────────────────────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const delay = el.classList.contains('reveal--delay-1') ? 80
+      : el.classList.contains('reveal--delay-2') ? 160
+      : el.classList.contains('reveal--delay-3') ? 240
+      : 0;
+    (el as HTMLElement).style.transitionDelay = `${delay}ms`;
+    observer.observe(el);
+  });
+</script>
+
+<style>
+  /* ── Screen-reader only ── */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ── Hero ── */
+  .hero-section {
+    padding-block: clamp(56px, 10vw, 120px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* Eyebrow as an accent badge */
+  .hero-text .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    padding: 0.3rem 0.75rem;
+    background: rgba(217, 170, 82, 0.12);
+    border: 1px solid rgba(217, 170, 82, 0.35);
+    border-radius: 100px;
+    font-size: 0.8125rem;
+    color: var(--color-ink);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-subtitle {
+    margin: 0 0 2.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    font-weight: 500;
+    color: var(--color-ink);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    max-width: 26ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtext {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ── Canvas ── */
+  .hero-canvas-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 380px;
+    justify-self: center;
+    cursor: crosshair;
+  }
+
+  #hero-canvas {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .canvas-hint {
+    position: absolute;
+    bottom: -1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--color-ink-soft);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+  }
+
+  .canvas-hint.visible {
+    opacity: 1;
+  }
+
+  /* ── Proof strip ── */
+  .proof-strip {
+    border-bottom: 1px solid var(--color-border);
+    padding-block: 2.5rem;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .proof-strip__inner {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1rem;
+    flex: 1 1 160px;
+  }
+
+  .proof-item__strong {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .proof-item__clarifier {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-ink-soft);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  /* ── Audience section ── */
+  .audience-inner {
+    max-width: 680px;
+  }
+
+  .audience-heading {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    color: var(--color-ink);
+    line-height: 1.15;
+  }
+
+  .audience-body {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  /* ── Services section ── */
+  .services-section {
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .section-heading-block {
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  .services-heading {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    color: var(--color-ink);
+    line-height: 1.08;
+  }
+
+  .services-subheading {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .service-grid__featured {
+    grid-column: 1 / -1;
+  }
+
+  .service-grid__featured :global(.service-card) {
+    border-left: 3px solid var(--color-accent);
+    padding: 2.25rem 2.5rem 2.5rem;
+  }
+
+  .service-grid__featured :global(.service-card__title) {
+    font-size: 1.5rem;
+  }
+
+  .service-grid__featured :global(.service-card__description) {
+    max-width: 64ch;
+  }
+
+  .services-link {
+    margin-top: 2rem;
+  }
+
+  /* ── Process section ── */
+  .process-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .process-heading {
+    margin: 0 0 1rem;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    color: var(--color-ink);
+    line-height: 1.15;
+  }
+
+  .process-body {
+    margin: 0 0 1.5rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .process-more {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    opacity: 1 !important;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .process-more:hover { opacity: 0.65 !important; }
+
+  .process-steps {
+    margin: 0; padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .process-step:first-child { border-top: 1px solid var(--color-border); }
+
+  .step-num {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-soft);
+    flex-shrink: 0;
+    padding-top: 2px;
+    min-width: 1.75rem;
+  }
+
+  .process-step strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 0.25rem;
+    font-family: var(--font-display);
+  }
+
+  .process-step p {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ── Knowledge section ── */
+  .knowledge-section {
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .knowledge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .knowledge-heading {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    color: var(--color-ink);
+    line-height: 1.15;
+  }
+
+  .knowledge-all-link { flex-shrink: 0; }
+
+  .knowledge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* ── CTA band ── */
+  .cta-band {
+    background: var(--color-panel-dark);
+    color: #ffffff;
+  }
+
+  .cta-band .eyebrow { color: rgba(255, 255, 255, 0.55); }
+
+  .cta-band__inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-band__heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: #ffffff;
+    max-width: 18ch;
+  }
+
+  .cta-band__body {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 42ch;
+    line-height: 1.65;
+  }
+
+  .cta-band__btn {
+    background: var(--color-accent);
+    color: var(--color-panel-dark);
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .knowledge-grid    { grid-template-columns: repeat(2, 1fr); }
+    .process-inner     { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  @media (max-width: 720px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-canvas-wrap {
+      order: -1; /* canvas above text on mobile */
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .canvas-hint { bottom: -1.5rem; }
+  }
+
+  @media (max-width: 640px) {
+    .service-grid      { grid-template-columns: 1fr; }
+    .knowledge-grid    { grid-template-columns: 1fr; }
+    .knowledge-header  { flex-direction: column; align-items: flex-start; }
+    .cta-band__inner   { flex-direction: column; align-items: flex-start; }
+    .proof-strip__inner { gap: 1.5rem; }
+    .proof-item        { flex: 1 1 calc(50% - 1.5rem); }
+  }
+</style>

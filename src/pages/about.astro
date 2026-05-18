@@ -1,0 +1,513 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import portrait from '../assets/lisa-photo.png';
+---
+
+<Layout
+  title="About — AiCraft"
+  description="AiCraft is a micro-consultancy run by a data scientist and designer with deep experience in AI, NLP, and data engineering—built for small organizations."
+>
+  <!-- Page hero -->
+  <section class="page-hero section">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1 class="page-hero__title">Senior expertise, small-studio delivery</h1>
+      <p class="page-hero__lead">
+        I'm a data scientist and designer who has spent a career at the intersection of language,
+        data, and human-computer interaction. I now help small organizations turn messy, underused
+        information into tools that support real-world decisions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section story-section">
+    <div class="container">
+      <div class="about-image-slot">
+        <Image
+          src={portrait}
+          alt="Lisa Harper"
+          class="about-portrait"
+          widths={[400, 640, 800]}
+          sizes="(max-width: 860px) 45vw, 280px"
+          quality={85}
+          loading="eager"
+        />
+        <blockquote class="about-values">
+          <p>
+            After retiring from federal service, I live fulltime in Hampshire County, WV — a rural
+            community with real needs and a lot of unrealized potential. I volunteer and teach
+            locally, and I started AiCraft because I believe AI can be harnessed to help communities
+            like mine actually thrive.
+          </p>
+          <footer class="about-values__byline">Lisa Harper · Hampshire County, WV</footer>
+        </blockquote>
+      </div>
+
+      <div class="story-inner">
+      <div class="story-text">
+        <h2 class="story-heading">Background</h2>
+
+        <p>
+          Before starting AiCraft, I led interdisciplinary teams in AI, cloud computing, and data
+          analytics inside the U.S. intelligence community. I both led applied research programs and the development of enterprise-scale knowledge
+          retrieval and language AI systems. That work taught me how to design
+          "intelligence-grade" solutions that are both technically solid and usable by people
+          working under pressure and real constraints.
+        </p>
+
+        <p>
+          Earlier in my career, I worked as a principal AI engineer on federally-funded projects
+          and industry–academic collaborations, building dialogue systems, interfaces, and
+          visualizations for complex datasets. Alongside that applied work, I've taught graduate
+          courses in natural language processing (NLP) and human–computer interaction (HCI) — helping students
+          build user interfaces with AI under the hood. 
+        </p>
+
+        <p>
+          At AiCraft, you get that same level of experience, but in a small-studio format: one
+          client at a time, clear scopes, and straightforward communication. I work directly with
+          you and your team—from the first whiteboard sketch to the live dashboard, AI agent, or
+          searchable archive. You own what we build together. I teach you how to use it and make 
+          it better over time.
+        </p>
+
+        <p>
+          Today my focus is on small businesses, local governments, and nonprofits with more data
+          than staff time. If your world is spreadsheets, email, historical records, and basic web
+          tools, I help you take a measured step into AI, automation, and data apps—starting with
+          one concrete problem we can solve together in weeks or months.
+        </p>
+
+        <p>
+          Every AI feature includes error analysis and evaluation so we can see how it behaves in
+          the real world and make it better over time, not worse.
+        </p>
+      </div>
+
+      <aside class="story-credentials">
+        <div class="credentials-block">
+          <p class="credentials-label">Areas of depth</p>
+          <ul class="credentials-list">
+            <li>AI technical program management</li>
+            <li>Natural language processing & language AI</li>
+            <li>Conversational agents</li>
+            <li>Knowledge retrieval & semantic search</li>
+            <li>AI evaluation</li>
+            <li>Data science & analytics</li>
+            <li>Information & interaction design</li>
+            <li>Static & JAMstack web development</li>
+          </ul>
+        </div>
+
+        <div class="credentials-block">
+          <p class="credentials-label">How I work</p>
+          <ul class="credentials-list">
+            <li>One scheduled engagement at a time—so I can go deep</li>
+            <li>Clear scope before any development begins</li>
+            <li>Plain language, no mystery</li>
+            <li>You own what we build</li>
+          </ul>
+        </div>
+      </aside>
+      </div><!-- /.story-inner -->
+    </div><!-- /.container -->
+  </section>
+
+  <!-- Case study -->
+  <section class="section case-section">
+    <div class="container">
+      <p class="eyebrow">Selected work</p>
+      <div class="case-card">
+        <div class="case-card__label-row">
+          <span class="case-card__type">Case study</span>
+          <a href="https://cacaponmusicanddance.org" class="case-card__link" target="_blank" rel="noopener">
+            cacaponmusicanddance.org ↗
+          </a>
+        </div>
+        <h2 class="case-card__title">Cacapon Music & Dance Foundation</h2>
+        <p class="case-card__context">
+          A small nonprofit connecting donors, scholarship students, and local square dance events.
+          They needed a modern site that could be hosted for free, was easy for volunteers to
+          maintain, and made it simple to share events, newsletters, and forms with their community.
+        </p>
+
+        <div class="case-card__body">
+          <div class="case-what">
+            <p class="case-section-label">What I did</p>
+            <ul class="case-list">
+              <li>Researched similar music and dance nonprofits to identify best-practice content, structure, and calls to action.</li>
+              <li>Developed a clear information architecture and key user task flows ("apply for a scholarship," "donate," "find an event") and reviewed them with the client before implementation.</li>
+              <li>Implemented a lightweight, future-proof site using plain HTML hosted via GitHub and Netlify, minimizing maintenance overhead and lock-in.</li>
+              <li>Created a concise style guide and decision log so future maintainers—human or AI—can quickly understand how the site and data are organized.</li>
+              <li>Applied the existing logo and brand, selecting complementary typography, color, and motion cues to emphasize music, movement, and community.</li>
+              <li>Designed a custom events calendar that highlights upcoming dances and deadlines in a way that's easy for families to scan and for volunteers to update.</li>
+              <li>Structured pages and content with basic SEO and clear question–answer patterns so both search engines and AI tools can better understand "who we are" and "how to participate."</li>
+            </ul>
+          </div>
+
+          <div class="case-outcomes">
+            <p class="case-section-label">Outcomes</p>
+            <ul class="case-list">
+              <li>A fast, low-cost site the organization can update themselves, with clear paths for donors, students, and dancers.</li>
+              <li>Centralized events, forms, and newsletters—reducing email back-and-forth and manual updates.</li>
+              <li>Better surface area for search and AI-driven question answering, making it easier for people to discover how to get involved.</li>
+              <li>After launch: an internal lightweight CRM to track grants, volunteers, and tech requests.</li>
+              <li>Reduced future onboarding time by capturing key design and technical decisions in clear, lightweight documentation.</li>
+            </ul>
+            <div class="case-impact">
+              <p class="case-impact__label">Since launch</p>
+              <p class="case-impact__text">
+                CMDF has acquired additional sponsorship and is now working to expand its programs
+                across two more counties—growth made possible in part by a clearer digital presence
+                and better-organized donor and event data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-note">
+        <p class="eyebrow" style="margin-bottom: 0.75rem;">In progress</p>
+        <p>
+          I'm currently building out internal demo projects—searchable archives, AI coaching agent, and an AI FAQ pilot—that illustrate the kind of work I do for clients. These
+          will appear here over time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section about-cta">
+    <div class="container about-cta__inner">
+      <h2 class="about-cta__heading">Work with AiCraft</h2>
+      <p class="about-cta__body">
+        I take on a small, focused engagements, scheduled focus deeply on your need. If you have a data,
+        automation, or web problem you'd like to talk through, the best first step is a short
+        conversation.
+      </p>
+      <a href="/contact" class="button button--primary">Get in touch</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-hero__title {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    max-width: 20ch;
+  }
+
+  .page-hero__lead {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    max-width: 58ch;
+    line-height: 1.7;
+  }
+
+  /* portrait + values */
+  .about-image-slot {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-bottom: 3.5rem;
+  }
+
+  .about-portrait {
+    display: block;
+    width: 280px;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .about-values {
+    margin: 0;
+    padding: 0;
+    align-self: center;
+  }
+
+  .about-values::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 0.8;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .about-values p {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-weight: 500;
+    color: var(--color-ink);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+  }
+
+  .about-values__byline {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  @media (max-width: 680px) {
+    .about-image-slot {
+      grid-template-columns: 1fr;
+    }
+
+    .about-portrait {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  /* story */
+  .story-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .story-heading {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+  }
+
+  .story-text p {
+    margin: 0 0 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.75;
+  }
+
+  .story-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .credentials-block {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .credentials-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .credentials-label {
+    margin: 0 0 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .credentials-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .credentials-list li {
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+    line-height: 1.5;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .credentials-list li::before {
+    content: '·';
+    color: var(--color-accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* case study */
+  .case-section {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .case-card {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    margin-top: 1.5rem;
+  }
+
+  .case-card__label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .case-card__type {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .case-card__link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+    opacity: 1 !important;
+  }
+
+  .case-card__link:hover {
+    color: var(--color-ink);
+    opacity: 1 !important;
+  }
+
+  .case-card__title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .case-card__context {
+    margin: 0 0 2rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+    max-width: 66ch;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .case-card__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .case-section-label {
+    margin: 0 0 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .case-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .case-list li {
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
+    display: flex;
+    gap: 0.625rem;
+    align-items: flex-start;
+  }
+
+  .case-list li::before {
+    content: '—';
+    color: var(--color-accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .case-impact {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(217, 170, 82, 0.1);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .case-impact__label {
+    margin: 0 0 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .case-impact__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    line-height: 1.65;
+  }
+
+  .work-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px dashed var(--color-border);
+    border-radius: 12px;
+  }
+
+  .work-note p:last-child {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    line-height: 1.65;
+  }
+
+  /* CTA */
+  .about-cta__inner {
+    max-width: 640px;
+  }
+
+  .about-cta__heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .about-cta__body {
+    margin: 0 0 1.75rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 860px) {
+    .story-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .case-card__body {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

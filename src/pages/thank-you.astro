@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Message sent — AiCraft"
+  description="Thanks for reaching out. We'll be in touch within two business days."
+>
+  <section class="thankyou-section section">
+    <div class="container thankyou-inner">
+      <p class="eyebrow">Message received</p>
+      <h1 class="thankyou-heading">Thanks — I'll be in touch soon.</h1>
+      <p class="thankyou-body">
+        I read every note personally and reply within two business days. If it sounds like a good fit,
+        I'll suggest a short call — no obligation, no pitch.
+      </p>
+      <div class="thankyou-actions">
+        <a href="/" class="button button--primary">Back to home</a>
+        <a href="/knowledge" class="button button--secondary">Read the knowledge base</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .thankyou-section {
+    padding-block: clamp(80px, 14vw, 160px);
+  }
+
+  .thankyou-inner {
+    max-width: 560px;
+  }
+
+  .thankyou-heading {
+    margin: 0 0 1.25rem;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+  }
+
+  .thankyou-body {
+    margin: 0 0 2.5rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .thankyou-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+</style>

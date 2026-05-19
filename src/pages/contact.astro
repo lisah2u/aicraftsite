@@ -34,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <form class="contact-form" method="POST" data-netlify="true" name="contact" netlify-honeypot="bot-field">
+      <form class="contact-form" method="POST" action="/thank-you" data-netlify="true" name="contact" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden" aria-hidden="true">
           <label>Don't fill this out if you're human: <input name="bot-field" /></label>

@@ -14,7 +14,7 @@ const services = [
     number: '01',
     title: 'Data & AI Strategy',
     description:
-      "Frame the right problem before building anything. I help you identify what you actually need—whether that's a searchable archive, an AI assistant, or a cleaner dataset—and sketch the smallest useful solution.",
+      "Frame the right problem before touching code. I help you identify what you actually need—whether that's a searchable archive, an AI assistant, or a cleaner dataset—and sketch the smallest useful solution.",
     tags: ['Information architecture', 'AI agent design', 'Problem framing'],
     href: '/services#strategy',
   },
@@ -22,7 +22,7 @@ const services = [
     number: '02',
     title: 'Dashboards & Decision Tools',
     description:
-      'Lightweight dashboards built around the questions your team actually asks. Not generic BI—a focused view that replaces manual spreadsheet reporting and explains the story behind your numbers.',
+      'Design of  dashboards built around actual questions so answers are at your fingertips.',
     tags: ['Data visualization', 'Grants & programs', 'Visual reporting'],
     href: '/services#dashboards',
   },
@@ -30,7 +30,7 @@ const services = [
     number: '03',
     title: 'Automation & Data Engineering',
     description:
-      'Reduce copy-paste work and make your numbers trustworthy. AI-driven automation for tagging, summarizing, and routing—with human-designed control gates so you save time without losing oversight.',
+      'Reduce copy-paste and disarticulated data. Supported with AI-driven automation with human-validated control gates so you save time without losing oversight.',
     tags: ['Workflow automation', 'Data cleanup', 'Integrations'],
     href: '/services#automation',
   },
@@ -38,7 +38,7 @@ const services = [
     number: '04',
     title: 'Connected Web Presence',
     description:
-      'Your website as a live data tool—not a static brochure. Forms that write to your systems, search that answers real questions, and AI-enhanced features grounded in your own content.',
+      'Your website as a live data application and not a static brochure. Forms that write to your systems, user search that answers real questions, and AI-enhanced features grounded in your own content.',
     tags: ['Modern Web Frameworks', 'Semantic search', 'Content architecture'],
     href: '/services#web',
   },
@@ -47,7 +47,7 @@ const services = [
 
 <Layout
   title="AiCraft — AI-Powered Data Solutions for Small Organizations"
-  description="AiCraft builds intelligence-grade AI, data, and web tools for small businesses, nonprofits, and local government teams. One client at a time, clear scopes, plain language."
+  description="AiCraft builds intelligence-grade AI, data, and web tools for small businesses, nonprofits, and local government teams. One to two clients at a time, clear scopes, plain language."
 >
   <!-- Hero -->
   <section class="hero-section">
@@ -56,9 +56,7 @@ const services = [
         <h1 class="sr-only">Data & AI solutions for small organizations — AiCraft</h1>
         <p class="eyebrow">Data & AI consultancy</p>
         <p class="hero-subtitle">
-          I help small businesses, local governments, and nonprofits turn messy, underused data
-          into clear dashboards, websites, automations, and decision tools that actually fit how
-          your team works.
+          I help small businesses, local governments, and nonprofits create workflows that turn messy, underused data into websites with clear dashboards, automations, and decision tools that fit your organization's needs.
         </p>
         <div class="hero-actions">
           <a href="/contact" class="button button--primary">Talk about your idea</a>
@@ -69,7 +67,6 @@ const services = [
 
       <div class="hero-canvas-wrap" aria-hidden="true">
         <canvas id="hero-canvas"></canvas>
-        <span class="canvas-hint" id="canvas-hint">hover to transform</span>
       </div>
     </div>
   </section>
@@ -78,7 +75,7 @@ const services = [
   <section class="proof-strip">
     <div class="container proof-strip__inner">
       <div class="proof-item">
-        <strong class="proof-item__strong">15+ years in AI & data</strong>
+        <strong class="proof-item__strong">25+ years in AI & data</strong>
         <span class="proof-item__clarifier">From enterprise intelligence to small nonprofits</span>
       </div>
       <div class="proof-item">
@@ -86,11 +83,11 @@ const services = [
         <span class="proof-item__clarifier">Enterprise knowledge retrieval & language AI</span>
       </div>
       <div class="proof-item">
-        <strong class="proof-item__strong">2–3 clients per quarter</strong>
-        <span class="proof-item__clarifier">One focused engagement at a time</span>
+        <strong class="proof-item__strong">2-3 clients per quarter</strong>
+        <span class="proof-item__clarifier">Focused engagement</span>
       </div>
       <div class="proof-item">
-        <strong class="proof-item__strong">You own everything we build</strong>
+        <strong class="proof-item__strong">You own everything</strong>
         <span class="proof-item__clarifier">Code, data, documentation—all yours</span>
       </div>
     </div>
@@ -106,9 +103,7 @@ const services = [
         </h2>
         <p class="audience-body">
           If your operations live in spreadsheets, inboxes, and a simple website—but modern data,
-          AI, and automation feel out of reach—you're exactly who I work with. I build lightweight
-          tools that plug into your existing systems so you get real leverage without big platforms
-          or long contracts.
+          AI, and automation feel out of reach—you're exactly who I work with. I build lightweight tools that plug into your existing systems so you get real leverage without big platforms or long contracts.
         </p>
       </div>
     </div>
@@ -146,7 +141,7 @@ const services = [
         <h2 class="process-heading">A focused partner, not a big agency</h2>
         <p class="process-body">
           You get senior-level data science, information design, and AI expertise—but delivered
-          like a small studio: one client at a time, clear scopes, and straightforward
+          like a small studio: depth over volume, clear scopes, and straightforward
           communication. No layers, no mystery.
         </p>
         <a href="/about" class="process-more">Learn more about me →</a>
@@ -184,7 +179,7 @@ const services = [
         <div class="knowledge-header reveal">
           <div>
             <p class="eyebrow">Knowledge</p>
-            <h2 class="knowledge-heading">Practical writing on data & AI</h2>
+            <h2 class="knowledge-heading">Distilled insights</h2>
           </div>
           <a href="/knowledge" class="button button--secondary knowledge-all-link">All articles →</a>
         </div>
@@ -222,49 +217,39 @@ const services = [
 </Layout>
 
 <script>
-  // ── Particle canvas animation ──────────────────────────────────────────────
+  // ── Ring / triangle canvas animation ─────────────────────────────────────
+  // Three separate equilateral triangles, each spinning around its own center.
+  // The three centers drift lazily as a group. Lines fade in — order from chaos.
   const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
   if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const ctx = canvas.getContext('2d')!;
 
-    // Jewel-tone palette anchored to logo red #AF342D (H≈3, S≈59%, L≈43%)
-    // All colors matched in depth and richness — not neon, not pastel
-    const PALETTE = [
-      '#AF342D', '#AF342D',  // logo red (anchor, doubled)
-      '#1C52A0',             // cobalt blue
-      '#C9A01A',             // rich mustard yellow
-      '#2D8035',             // forest green
-      '#C55A1A',             // deep orange
-      '#6828A0',             // violet
-      '#A82862',             // deep rose
-      '#147A74',             // teal
-    ];
-    // Shape types: 0 circle, 1 square, 2 triangle, 3 diamond, 4 star, 5 plus
-    const SHAPE_COUNT = 6;
-    const N = 48;
-    const SPRING = 0.09;
-    const DAMP   = 0.80;
-
     let W = 0, H = 0;
-    let shapeIndex = -1;
-    let frameCount = 0;
+    const CYCLE_MS = 12000; // ms per full fade-in / fade-out cycle
 
-    interface Particle {
-      x: number; y: number;
-      vx: number; vy: number;
-      tx: number; ty: number;
-      color: string; r: number;
-      shape: number;       // 0–5
-      rotation: number;
-      rotSpeed: number;
-      mode: 'scatter' | 'pending' | 'shape';
-      startFrame: number;
-    }
+    // Individual spin speeds (rad/ms) — slightly different for organic drift
+    const SPIN_SPEEDS  = [0.000100, 0.000107, 0.000093];
+    const GROUP_SPEED  = 0.000018;
+    const CENTER_FRAC  = 0.26;
+    const TRI_FRAC     = 0.15;
+    const BREATHE_AMP  = 0.028;
+    const BREATHE_FREQ = 0.00035;
 
-    let particles: Particle[] = [];
+    // Mouse attraction spring physics
+    const ATTRACT_R = 90;   // px — influence radius
+    const ATTRACT_F = 1.6;  // peak force toward mouse
+    const SPRING_K  = 0.07; // pull back to natural position
+    const DAMP      = 0.76; // velocity decay per frame
+    const MAX_DISP  = 52;   // px cap on displacement
+
+    interface PtOffset { dx: number; dy: number; vx: number; vy: number; }
+    const ptOffsets: PtOffset[] = Array.from({ length: 9 }, () =>
+      ({ dx: 0, dy: 0, vx: 0, vy: 0 })
+    );
+    let mouseX = -9999, mouseY = -9999;
 
     function resize() {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr  = window.devicePixelRatio || 1;
       const rect = (canvas.parentElement as HTMLElement).getBoundingClientRect();
       W = rect.width;
       H = rect.height;
@@ -275,274 +260,100 @@ const services = [
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    function initParticles() {
-      particles = Array.from({ length: N }, () => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: (Math.random() - 0.5) * 0.8,
-        tx: 0, ty: 0,
-        color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
-        r: 2.5 + Math.random() * 8.5,
-        shape: Math.floor(Math.random() * SHAPE_COUNT),
-        rotation: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.04,
-        mode: 'scatter',
-        startFrame: 0,
-      }));
-    }
-
-    // Return N target positions (canvas px) for each shape
-    function shapeTargets(si: number): { x: number; y: number }[] {
-      const cx = W / 2, cy = H / 2;
-      const r  = Math.min(W, H) * 0.36;
-      const pts: { x: number; y: number }[] = [];
-
-      switch (si % 6) {
-        case 0: { // Circle outline
-          for (let i = 0; i < N; i++) {
-            const t = (i / N) * Math.PI * 2;
-            pts.push({ x: cx + r * Math.cos(t), y: cy + r * Math.sin(t) });
-          }
-          break;
-        }
-        case 1: { // Equilateral triangle — filled with even rows
-          const top = { x: cx, y: cy - r * 1.12 };
-          const bl  = { x: cx - r * 0.97, y: cy + r * 0.56 };
-          const br  = { x: cx + r * 0.97, y: cy + r * 0.56 };
-          // Build row-by-row so distribution looks intentional
-          const rows = 8;
-          let placed = 0;
-          outer: for (let row = 0; row < rows; row++) {
-            const t = (row + 0.5) / rows;
-            const leftX  = top.x + (bl.x - top.x) * t;
-            const rightX = top.x + (br.x - top.x) * t;
-            const y = top.y + (bl.y - top.y) * t;
-            const count = Math.round(1 + (N - 1) * (row / (rows - 1)));
-            const slots = Math.min(count, N - placed);
-            for (let col = 0; col < slots && placed < N; col++) {
-              const f = slots > 1 ? col / (slots - 1) : 0.5;
-              pts.push({ x: leftX + (rightX - leftX) * f, y });
-              placed++;
-              if (placed >= N) break outer;
-            }
-          }
-          // Fill any remainder
-          while (pts.length < N) pts.push({ x: cx, y: cy });
-          break;
-        }
-        case 2: { // Regular hexagon outline
-          for (let i = 0; i < N; i++) {
-            const t       = (i / N) * Math.PI * 2;
-            const sides   = 6;
-            const sideI   = Math.floor(t / (Math.PI * 2 / sides));
-            const t0      = sideI       * (Math.PI * 2 / sides) - Math.PI / 2;
-            const t1      = (sideI + 1) * (Math.PI * 2 / sides) - Math.PI / 2;
-            const lerp    = (t - sideI * (Math.PI * 2 / sides)) / (Math.PI * 2 / sides);
-            pts.push({
-              x: (cx + r * Math.cos(t0)) + ((cx + r * Math.cos(t1)) - (cx + r * Math.cos(t0))) * lerp,
-              y: (cy + r * Math.sin(t0)) + ((cy + r * Math.sin(t1)) - (cy + r * Math.sin(t0))) * lerp,
-            });
-          }
-          break;
-        }
-        case 3: { // Diamond (rhombus) outline
-          // 4 sides, 12 particles each
-          const perSide = Math.ceil(N / 4);
-          const verts = [
-            { x: cx,         y: cy - r * 1.1 },
-            { x: cx + r * 0.8, y: cy          },
-            { x: cx,         y: cy + r * 1.1 },
-            { x: cx - r * 0.8, y: cy          },
-          ];
-          for (let side = 0; side < 4 && pts.length < N; side++) {
-            const a = verts[side], b = verts[(side + 1) % 4];
-            for (let j = 0; j < perSide && pts.length < N; j++) {
-              const f = j / perSide;
-              pts.push({ x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f });
-            }
-          }
-          break;
-        }
-        case 4: { // 6-point star outline
-          const outer = r, inner = r * 0.42;
-          const sides = 12;
-          for (let i = 0; i < N; i++) {
-            const t     = (i / N) * Math.PI * 2;
-            const sideI = Math.floor(t / (Math.PI * 2 / sides));
-            const t0    = sideI       * (Math.PI * 2 / sides) - Math.PI / 2;
-            const t1    = (sideI + 1) * (Math.PI * 2 / sides) - Math.PI / 2;
-            const lerp  = (t - sideI * (Math.PI * 2 / sides)) / (Math.PI * 2 / sides);
-            const r0    = sideI % 2 === 0 ? outer : inner;
-            const r1    = (sideI + 1) % 2 === 0 ? outer : inner;
-            pts.push({
-              x: (cx + r0 * Math.cos(t0)) + ((cx + r1 * Math.cos(t1)) - (cx + r0 * Math.cos(t0))) * lerp,
-              y: (cy + r0 * Math.sin(t0)) + ((cy + r1 * Math.sin(t1)) - (cy + r0 * Math.sin(t0))) * lerp,
-            });
-          }
-          break;
-        }
-        case 5: { // Regular grid 8 × 6
-          const cols = 8, rows = 6;
-          for (let i = 0; i < N; i++) {
-            const col = i % cols, row = Math.floor(i / cols);
-            pts.push({
-              x: cx - r * 0.9 + (col / (cols - 1)) * r * 1.8,
-              y: cy - r * 0.65 + (row / (rows - 1)) * r * 1.3,
-            });
-          }
-          break;
-        }
-      }
-      return pts;
-    }
-
-    function formShape(si: number) {
-      shapeIndex = si;
-      const targets = shapeTargets(si);
-      // Stagger: each particle begins moving 2 frames after the previous
-      particles.forEach((p, i) => {
-        p.tx = targets[i].x;
-        p.ty = targets[i].y;
-        p.mode = 'pending';
-        p.startFrame = frameCount + i * 2;
+    function triPoints(tri: number, ts: number): [number, number][] {
+      const S = Math.min(W, H);
+      const groupAngle = GROUP_SPEED * ts + Math.PI / 2;
+      const cAngle = groupAngle + tri * (2 * Math.PI / 3);
+      const Rc = S * CENTER_FRAC;
+      const cx = W / 2 + Rc * Math.cos(cAngle);
+      const cy = H / 2 + Rc * Math.sin(cAngle);
+      const Rt      = S * TRI_FRAC;
+      const breathe = Rt * BREATHE_AMP * Math.sin(BREATHE_FREQ * ts + tri * (2 * Math.PI / 3));
+      const r       = Rt + breathe;
+      const rot     = SPIN_SPEEDS[tri] * ts;
+      return [0, 1, 2].map(j => {
+        const a = rot + j * (2 * Math.PI / 3);
+        return [cx + r * Math.cos(a), cy + r * Math.sin(a)] as [number, number];
       });
     }
 
-    function update() {
-      frameCount++;
-      const pad = 10;
-      particles.forEach(p => {
-        if (p.mode === 'pending' && frameCount >= p.startFrame) p.mode = 'shape';
+    function draw(ts: number) {
+      const raw = (1 - Math.cos((ts / CYCLE_MS) * Math.PI * 2)) / 2;
+      const lineOpacity = raw * raw * (3 - 2 * raw) * 0.9;
 
-        if (p.mode === 'scatter') {
-          p.vx += (Math.random() - 0.5) * 0.07;
-          p.vy += (Math.random() - 0.5) * 0.07;
-          const speed = Math.hypot(p.vx, p.vy);
-          if (speed > 0.85) { p.vx *= 0.85 / speed; p.vy *= 0.85 / speed; }
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < pad)     { p.x = pad;     p.vx =  Math.abs(p.vx) * 0.6; }
-          if (p.x > W - pad) { p.x = W - pad; p.vx = -Math.abs(p.vx) * 0.6; }
-          if (p.y < pad)     { p.y = pad;     p.vy =  Math.abs(p.vy) * 0.6; }
-          if (p.y > H - pad) { p.y = H - pad; p.vy = -Math.abs(p.vy) * 0.6; }
-          p.rotation += p.rotSpeed;
-        } else if (p.mode === 'shape') {
-          p.vx = (p.vx + (p.tx - p.x) * SPRING) * DAMP;
-          p.vy = (p.vy + (p.ty - p.y) * SPRING) * DAMP;
-          p.x += p.vx;
-          p.y += p.vy;
-          // Slowly spin down once settled
-          p.rotSpeed *= 0.97;
-          p.rotation += p.rotSpeed;
-        }
-      });
-    }
-
-    function drawParticle(p: Particle) {
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rotation);
-      ctx.fillStyle = p.color;
-      const r = p.r;
-
-      switch (p.shape) {
-        case 0: // circle
-          ctx.beginPath();
-          ctx.arc(0, 0, r, 0, Math.PI * 2);
-          ctx.fill();
-          break;
-        case 1: // square
-          ctx.fillRect(-r * 0.88, -r * 0.88, r * 1.76, r * 1.76);
-          break;
-        case 2: // equilateral triangle
-          ctx.beginPath();
-          ctx.moveTo(0, -r * 1.15);
-          ctx.lineTo( r,  r * 0.58);
-          ctx.lineTo(-r,  r * 0.58);
-          ctx.closePath();
-          ctx.fill();
-          break;
-        case 3: // diamond
-          ctx.beginPath();
-          ctx.moveTo(0,  -r * 1.25);
-          ctx.lineTo( r * 0.88, 0);
-          ctx.lineTo(0,   r * 1.25);
-          ctx.lineTo(-r * 0.88, 0);
-          ctx.closePath();
-          ctx.fill();
-          break;
-        case 4: // 4-point star
-          ctx.beginPath();
-          for (let i = 0; i < 8; i++) {
-            const a   = (i / 8) * Math.PI * 2 - Math.PI / 2;
-            const rad = i % 2 === 0 ? r * 1.3 : r * 0.48;
-            const x = Math.cos(a) * rad, y = Math.sin(a) * rad;
-            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-          }
-          ctx.closePath();
-          ctx.fill();
-          break;
-        case 5: // plus / cross
-          ctx.fillRect(-r * 0.38, -r * 1.1, r * 0.76, r * 2.2);
-          ctx.fillRect(-r * 1.1,  -r * 0.38, r * 2.2,  r * 0.76);
-          break;
-      }
-      ctx.restore();
-    }
-
-    function draw() {
       ctx.clearRect(0, 0, W, H);
-      particles.forEach(drawParticle);
+      const circleR = Math.min(W, H) * 0.050;
+      const lineW   = Math.max(2, circleR * 0.42);
+
+      const allNatural = [0, 1, 2].map(tri => triPoints(tri, ts));
+
+      // Apply spring physics to each point and compute displaced render positions
+      const allPts: [number, number][][] = allNatural.map((pts, tri) =>
+        pts.map(([nx, ny], j) => {
+          const off = ptOffsets[tri * 3 + j];
+          const rx = nx + off.dx, ry = ny + off.dy;
+          // Attraction toward mouse from current displaced position
+          const toMX = mouseX - rx, toMY = mouseY - ry;
+          const dist = Math.hypot(toMX, toMY);
+          if (dist < ATTRACT_R && dist > 0) {
+            const strength = ATTRACT_F * (1 - dist / ATTRACT_R);
+            off.vx += (toMX / dist) * strength;
+            off.vy += (toMY / dist) * strength;
+          }
+          // Spring back toward natural position, then damp
+          off.vx = (off.vx - SPRING_K * off.dx) * DAMP;
+          off.vy = (off.vy - SPRING_K * off.dy) * DAMP;
+          off.dx = Math.max(-MAX_DISP, Math.min(MAX_DISP, off.dx + off.vx));
+          off.dy = Math.max(-MAX_DISP, Math.min(MAX_DISP, off.dy + off.vy));
+          return [nx + off.dx, ny + off.dy] as [number, number];
+        })
+      );
+
+      // Lines first — circles paint over the endpoints
+      for (let tri = 0; tri < 3; tri++) {
+        const pts = allPts[tri];
+        ctx.beginPath();
+        ctx.moveTo(pts[0][0], pts[0][1]);
+        ctx.lineTo(pts[1][0], pts[1][1]);
+        ctx.lineTo(pts[2][0], pts[2][1]);
+        ctx.closePath();
+        ctx.strokeStyle = `rgba(23, 23, 23, ${(lineOpacity * 0.9).toFixed(3)})`;
+        ctx.lineWidth   = lineW;
+        ctx.stroke();
+      }
+
+      // Solid circles on top — always visible, mask line endpoints
+      for (let tri = 0; tri < 3; tri++) {
+        for (const [x, y] of allPts[tri]) {
+          ctx.beginPath();
+          ctx.arc(x, y, circleR, 0, Math.PI * 2);
+          ctx.fillStyle = '#171717';
+          ctx.fill();
+        }
+      }
     }
 
-    let animId = 0;
-    let animStarted = false;
-
-    function loop() {
-      update();
-      draw();
-      animId = requestAnimationFrame(loop);
+    let started = false;
+    function loop(ts: number) {
+      draw(ts);
+      requestAnimationFrame(loop);
     }
 
-    // Init via ResizeObserver — size canvas and draw one static frame; don't animate yet
-    let initialized = false;
+    canvas.addEventListener('mousemove', e => {
+      const r = canvas.getBoundingClientRect();
+      mouseX = e.clientX - r.left;
+      mouseY = e.clientY - r.top;
+    });
+    canvas.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
+
     const ro = new ResizeObserver(() => {
       resize();
-      if (!initialized) {
-        initialized = true;
-        initParticles();
-        draw(); // static snapshot — no loop until interaction
-        const hint = document.getElementById('canvas-hint');
-        if (hint) hint.classList.add('visible');
-      } else if (animStarted && shapeIndex >= 0) {
-        formShape(shapeIndex); // recompute shape targets after resize
-      } else if (!animStarted) {
-        draw(); // redraw static snapshot after resize
+      if (!started) {
+        started = true;
+        requestAnimationFrame(loop);
       }
     });
     ro.observe(canvas.parentElement as Element);
-
-    // First interaction starts the loop; every subsequent one cycles shapes
-    let nextShape = 0;
-    let cooldown = false;
-
-    function handleInteraction() {
-      if (!animStarted) {
-        animStarted = true;
-        loop();
-      }
-      if (cooldown) return;
-      cooldown = true;
-      const hint = document.getElementById('canvas-hint');
-      if (hint) hint.style.opacity = '0';
-      formShape(nextShape);
-      nextShape = (nextShape + 1) % 6;
-      setTimeout(() => { cooldown = false; }, 500);
-    }
-
-    canvas.addEventListener('mouseenter', handleInteraction);
-    canvas.addEventListener('touchstart', handleInteraction, { passive: true });
   }
 
   // ── Scroll reveal ──────────────────────────────────────────────────────────
@@ -656,24 +467,6 @@ const services = [
     inset: 0;
     width: 100%;
     height: 100%;
-  }
-
-  .canvas-hint {
-    position: absolute;
-    bottom: -1.75rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.75rem;
-    color: var(--color-ink-soft);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    pointer-events: none;
-  }
-
-  .canvas-hint.visible {
-    opacity: 1;
   }
 
   /* ── Proof strip ── */

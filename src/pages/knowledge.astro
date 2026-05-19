@@ -67,17 +67,18 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 <style>
   .page-hero {
     border-bottom: 1px solid var(--color-border);
+    text-align: center;
   }
 
   .page-hero__title {
-    margin: 0 0 1.25rem;
+    margin: 0 auto 1.25rem;
     font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.05;
     letter-spacing: -0.04em;
   }
 
   .page-hero__lead {
-    margin: 0;
+    margin: 0 auto;
     font-size: 1.0625rem;
     color: var(--color-ink-soft);
     max-width: 52ch;

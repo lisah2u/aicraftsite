@@ -9,11 +9,23 @@ At some point, your small business or organization has said, "how do we reach mo
 
 You look at your budget and think, "let's update the website."
 
-Maybe you've hired someone to do exactly that, quarterly. But here's the thing... the website gets refreshed and the problem doesn't go away. Because the real issue isn't outdated content. It's that your website doesn't talk to anything else. It just sits there... a silo.
+Maybe you've hired someone to do exactly that on a quarterly basis. But here's the thing... the website gets refreshed and the problem doesn't go away. Because the real issue isn't outdated content. It's that your website doesn't talk to anything else. It just sits there as silo. 
+
+So how does this translate for your users? It adds friction and makes it harder for them to find the content they are looking for. And they give up or go elsewhere before you've had a chance to reach them. 
+
+## Touchpoints are the key
+
+Think about this from another perspective... you get contacts from your website, and maybe from other mailing lists, as well. You want specific data to flow automatically from one place to another. Of particular interest are the places where your organization connects with its users and stakeholders. These are touchpoints.
+
+Your website is a touchpoint, a mailing list is a touchpoint, email is a touchpoint, even Discord is a touchpoint.
+
+When you don't connect your workflow and data across touchpoints, you increase friction.
+
+![A disconnected historical tour workflow — separate systems with no shared data](../../assets/disconnected-historical-tour.jpeg)
 
 ## Why websites are data tools
 
-Think about it this way... you get contacts from your website, and maybe from other mailing lists, as well. You want specific data to flow automatically from one touchpoint to another. Your website is a touchpoint, a mailing list is a touchpoint, email is a touchpoint... even Discord is a touchpoint.
+We tend to think of a website as a static brochure... that has an update cycle. However, these days dynamic websites are very accessible and easier to build and maintain than ever. 
 
 When I say your website should function as a data tool, I mean a few specific things:
 
@@ -21,6 +33,10 @@ When I say your website should function as a data tool, I mean a few specific th
 - **Content driven by your records.** An events calendar that pulls from a shared spreadsheet. A program directory that reflects your current offerings, not a static page you update by hand.
 - **Search that answers questions.** Instead of a wall of text, a search interface lets people find what they actually need... for example, "what events are coming up?" or "how do I apply?"
 - **Visibility into what's being asked.** When your site, touchpoints, and data connect, you can see which questions are popular and use that to improve your communications.
+
+The net result is that both your organization and your customers will connect with greater ease and less friction. Information is easier to find, and your customer's journey is ultimately more successful.
+
+![A connected historical tour workflow — data flowing across touchpoints](../../assets/touchpoints-history.jpeg)
 
 ## Why this matters for small organizations specifically
 

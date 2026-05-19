@@ -1,0 +1,24 @@
+# AiCraft
+
+> AiCraft is a micro-consultancy that builds AI, data, and web tools for small businesses, nonprofits, and local government teams. One to two clients at a time, clear scopes, plain language.
+
+AiCraft is run by a data scientist and designer with 25+ years of experience in AI, NLP, and data engineering — including enterprise-scale and federal-grade AI systems. The practice focuses on small organizations that need real leverage from their data but can't hire a full data department.
+
+## Pages
+
+- [Home](/): Overview of services, process, and recent knowledge articles.
+- [Services](/services): Four service areas — Data & AI Strategy, Dashboards & Decision Tools, Automation & Data Engineering, and Connected Web Presence. Includes fixed-scope pilot engagements.
+- [Knowledge](/knowledge): Articles on AI, data, and web topics relevant to small organizations.
+- [About](/about): Background on the practice and founder.
+- [Contact](/contact): How to start a project conversation.
+
+## Services
+
+- **Data & AI Strategy** — Problem framing, information architecture, AI agent design. Identifying the smallest useful solution before building anything.
+- **Dashboards & Decision Tools** — Data visualization and reporting tools built around the actual questions an organization needs to answer.
+- **Automation & Data Engineering** — Workflow automation, data cleanup, and integrations with human-validated control gates.
+- **Connected Web Presence** — Modern web frameworks, semantic search, and AI-enhanced features grounded in the client's own content.
+
+## About this site
+
+Built with Astro. Content is written and maintained by the AiCraft founder. Knowledge articles reflect real experience and are not AI-generated.

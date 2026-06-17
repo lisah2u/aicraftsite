@@ -12,7 +12,7 @@ import portrait from '../assets/lisa-photo.png';
   <section class="page-hero section">
     <div class="container">
       <p class="eyebrow">About</p>
-      <h1 class="page-hero__title">Senior expertise, small-studio delivery</h1>
+      <h1 class="page-hero__title">Senior expertise, <span class="grad-text">small-studio delivery</span></h1>
       <p class="page-hero__lead">
         I'm a data scientist and designer who has spent a career at the intersection of language,
         data, and human-computer interaction. I now help small organizations turn messy, underused
@@ -20,6 +20,8 @@ import portrait from '../assets/lisa-photo.png';
       </p>
     </div>
   </section>
+
+  <div class="band band--sunrise" aria-hidden="true"></div>
 
   <!-- Story -->
   <section class="section story-section">
@@ -114,6 +116,8 @@ import portrait from '../assets/lisa-photo.png';
     </div><!-- /.container -->
   </section>
 
+  <div class="band band--tide" aria-hidden="true"></div>
+
   <!-- Case study -->
   <section class="section case-section">
     <div class="container">
@@ -176,6 +180,8 @@ import portrait from '../assets/lisa-photo.png';
       </div>
     </div>
   </section>
+
+  <div class="band band--dusk" aria-hidden="true"></div>
 
   <!-- CTA -->
   <section class="section about-cta">
@@ -347,7 +353,7 @@ import portrait from '../assets/lisa-photo.png';
 
   /* case study */
   .case-section {
-    background: rgba(255, 255, 255, 0.35);
+    background: linear-gradient(180deg, var(--color-tint), var(--color-bg));
   }
 
   .case-card {
@@ -482,7 +488,12 @@ import portrait from '../assets/lisa-photo.png';
     line-height: 1.65;
   }
 
-  /* CTA */
+  /* CTA — dark anchor */
+  .about-cta {
+    background: var(--color-panel-dark);
+    color: #ffffff;
+  }
+
   .about-cta__inner {
     max-width: 640px;
   }
@@ -490,13 +501,19 @@ import portrait from '../assets/lisa-photo.png';
   .about-cta__heading {
     margin: 0 0 0.75rem;
     font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: #ffffff;
   }
 
   .about-cta__body {
     margin: 0 0 1.75rem;
     font-size: 1.0625rem;
-    color: var(--color-ink-soft);
+    color: rgba(255, 255, 255, 0.65);
     line-height: 1.7;
+  }
+
+  .about-cta .button--primary {
+    background: var(--color-accent);
+    color: var(--color-panel-dark);
   }
 
   @media (max-width: 860px) {

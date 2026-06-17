@@ -98,7 +98,7 @@ const pilots = [
   <section class="page-hero section">
     <div class="container">
       <p class="eyebrow">Services</p>
-      <h1 class="page-hero__title">Smarter workflows, better decisions.</h1>
+      <h1 class="page-hero__title">Smarter workflows, <span class="grad-text">better decisions</span>.</h1>
       <div class="hero-contrast" aria-label="Before and after working with AiCraft">
         <span class="contrast-label">Before</span>
         <span aria-hidden="true"></span>
@@ -124,6 +124,8 @@ const pilots = [
       </div>
     </div>
   </section>
+
+  <div class="band band--sunrise" aria-hidden="true"></div>
 
   <!-- Service buckets -->
   <section class="section buckets-section">
@@ -156,6 +158,8 @@ const pilots = [
     </div>
   </section>
 
+  <div class="band band--tide" aria-hidden="true"></div>
+
   <!-- Pilot projects -->
   <section class="section pilots-section">
     <div class="container">
@@ -177,6 +181,8 @@ const pilots = [
       </div>
     </div>
   </section>
+
+  <div class="band band--dusk" aria-hidden="true"></div>
 
   <!-- CTA -->
   <section class="section services-cta">
@@ -370,7 +376,7 @@ const pilots = [
 
   /* pilots */
   .pilots-section {
-    background: rgba(255, 255, 255, 0.55);
+    background: linear-gradient(180deg, var(--color-tint), var(--color-bg));
   }
 
   .pilots-heading {

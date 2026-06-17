@@ -7,6 +7,10 @@
   --color-ink-soft: #5F5A53;
   --color-panel-dark: #1C1C1C;
   --color-accent: #D9AA52;
+  --color-coral: #EC6A4C;
+  --color-teal: #1F8A8A;
+  --color-indigo: #4F46E5;
+  --color-tint: #EAF1F0;
   --color-border: #D8D2C8;
 
   --font-sans: 'Inter Variable', Inter, sans-serif;
@@ -67,6 +71,34 @@
     --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
     --duration-fast: 180ms;
     --duration-med: 260ms;
+
+    /* gradient-forward palette: color arrives as gradients, not flat fills */
+    --grad-sunrise: linear-gradient(100deg, var(--color-accent), var(--color-coral));
+    --grad-tide: linear-gradient(100deg, var(--color-teal), var(--color-indigo));
+    --grad-dusk: linear-gradient(100deg, var(--color-indigo), var(--color-panel-dark));
+  }
+
+  /* gradient "splash" band — punctuates section transitions */
+  .band {
+    height: 6px;
+    width: 100%;
+  }
+  .band--sunrise { background: linear-gradient(90deg, var(--color-accent), var(--color-coral)); }
+  .band--tide    { background: linear-gradient(90deg, var(--color-teal), var(--color-indigo)); }
+  .band--dusk    { background: linear-gradient(90deg, var(--color-indigo), var(--color-panel-dark)); }
+
+  /* gradient-clipped text accent for headlines */
+  .grad-text {
+    background: var(--grad-sunrise);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grad-text--tide {
+    background: var(--grad-tide);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   main {

@@ -56,7 +56,7 @@ const services = [
         <h1 class="sr-only">Data & AI solutions for small organizations — AiCraft</h1>
         <p class="eyebrow">Data & AI consultancy</p>
         <p class="hero-subtitle">
-          I help small businesses, local governments, and nonprofits create workflows that turn messy, underused data into websites with clear dashboards, automations, and decision tools that fit your organization's needs.
+          I help small businesses, local governments, and nonprofits create workflows that turn messy, underused data into <span class="grad-text">clear dashboards</span>, automations, and decision tools that fit your organization's needs.
         </p>
         <div class="hero-actions">
           <a href="/contact" class="button button--primary">Talk about your idea</a>
@@ -65,11 +65,23 @@ const services = [
         <p class="hero-subtext">A short call to see what's possible with your existing data.</p>
       </div>
 
-      <div class="hero-canvas-wrap" aria-hidden="true">
-        <canvas id="hero-canvas"></canvas>
+      <!-- Static gradient composition with a one-time bar-grow accent -->
+      <div class="hero-composition" aria-hidden="true">
+        <div class="comp-blob comp-blob--1"></div>
+        <div class="comp-blob comp-blob--2"></div>
+        <div class="comp-card comp-card--back"></div>
+        <div class="comp-card comp-card--front">
+          <div class="comp-bar" style="--h:38%; --i:0"></div>
+          <div class="comp-bar" style="--h:62%; --i:1"></div>
+          <div class="comp-bar" style="--h:48%; --i:2"></div>
+          <div class="comp-bar comp-bar--accent" style="--h:88%; --i:3"></div>
+          <div class="comp-bar" style="--h:70%; --i:4"></div>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="band band--sunrise" aria-hidden="true"></div>
 
   <!-- Proof strip -->
   <section class="proof-strip">
@@ -108,6 +120,8 @@ const services = [
       </div>
     </div>
   </section>
+
+  <div class="band band--tide" aria-hidden="true"></div>
 
   <!-- Services grid -->
   <section class="section services-section" id="services">
@@ -200,6 +214,8 @@ const services = [
     </section>
   )}
 
+  <div class="band band--dusk" aria-hidden="true"></div>
+
   <!-- CTA band -->
   <section class="cta-band section">
     <div class="container cta-band__inner reveal">
@@ -217,145 +233,6 @@ const services = [
 </Layout>
 
 <script>
-  // ── Ring / triangle canvas animation ─────────────────────────────────────
-  // Three separate equilateral triangles, each spinning around its own center.
-  // The three centers drift lazily as a group. Lines fade in — order from chaos.
-  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
-  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const ctx = canvas.getContext('2d')!;
-
-    let W = 0, H = 0;
-    const CYCLE_MS = 12000; // ms per full fade-in / fade-out cycle
-
-    // Individual spin speeds (rad/ms) — slightly different for organic drift
-    const SPIN_SPEEDS  = [0.000100, 0.000107, 0.000093];
-    const GROUP_SPEED  = 0.000018;
-    const CENTER_FRAC  = 0.26;
-    const TRI_FRAC     = 0.15;
-    const BREATHE_AMP  = 0.028;
-    const BREATHE_FREQ = 0.00035;
-
-    // Mouse attraction spring physics
-    const ATTRACT_R = 90;   // px — influence radius
-    const ATTRACT_F = 1.6;  // peak force toward mouse
-    const SPRING_K  = 0.07; // pull back to natural position
-    const DAMP      = 0.76; // velocity decay per frame
-    const MAX_DISP  = 52;   // px cap on displacement
-
-    interface PtOffset { dx: number; dy: number; vx: number; vy: number; }
-    const ptOffsets: PtOffset[] = Array.from({ length: 9 }, () =>
-      ({ dx: 0, dy: 0, vx: 0, vy: 0 })
-    );
-    let mouseX = -9999, mouseY = -9999;
-
-    function resize() {
-      const dpr  = window.devicePixelRatio || 1;
-      const rect = (canvas.parentElement as HTMLElement).getBoundingClientRect();
-      W = rect.width;
-      H = rect.height;
-      canvas.width  = W * dpr;
-      canvas.height = H * dpr;
-      canvas.style.width  = W + 'px';
-      canvas.style.height = H + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function triPoints(tri: number, ts: number): [number, number][] {
-      const S = Math.min(W, H);
-      const groupAngle = GROUP_SPEED * ts + Math.PI / 2;
-      const cAngle = groupAngle + tri * (2 * Math.PI / 3);
-      const Rc = S * CENTER_FRAC;
-      const cx = W / 2 + Rc * Math.cos(cAngle);
-      const cy = H / 2 + Rc * Math.sin(cAngle);
-      const Rt      = S * TRI_FRAC;
-      const breathe = Rt * BREATHE_AMP * Math.sin(BREATHE_FREQ * ts + tri * (2 * Math.PI / 3));
-      const r       = Rt + breathe;
-      const rot     = SPIN_SPEEDS[tri] * ts;
-      return [0, 1, 2].map(j => {
-        const a = rot + j * (2 * Math.PI / 3);
-        return [cx + r * Math.cos(a), cy + r * Math.sin(a)] as [number, number];
-      });
-    }
-
-    function draw(ts: number) {
-      const raw = (1 - Math.cos((ts / CYCLE_MS) * Math.PI * 2)) / 2;
-      const lineOpacity = raw * raw * (3 - 2 * raw) * 0.9;
-
-      ctx.clearRect(0, 0, W, H);
-      const circleR = Math.min(W, H) * 0.050;
-      const lineW   = Math.max(2, circleR * 0.42);
-
-      const allNatural = [0, 1, 2].map(tri => triPoints(tri, ts));
-
-      // Apply spring physics to each point and compute displaced render positions
-      const allPts: [number, number][][] = allNatural.map((pts, tri) =>
-        pts.map(([nx, ny], j) => {
-          const off = ptOffsets[tri * 3 + j];
-          const rx = nx + off.dx, ry = ny + off.dy;
-          // Attraction toward mouse from current displaced position
-          const toMX = mouseX - rx, toMY = mouseY - ry;
-          const dist = Math.hypot(toMX, toMY);
-          if (dist < ATTRACT_R && dist > 0) {
-            const strength = ATTRACT_F * (1 - dist / ATTRACT_R);
-            off.vx += (toMX / dist) * strength;
-            off.vy += (toMY / dist) * strength;
-          }
-          // Spring back toward natural position, then damp
-          off.vx = (off.vx - SPRING_K * off.dx) * DAMP;
-          off.vy = (off.vy - SPRING_K * off.dy) * DAMP;
-          off.dx = Math.max(-MAX_DISP, Math.min(MAX_DISP, off.dx + off.vx));
-          off.dy = Math.max(-MAX_DISP, Math.min(MAX_DISP, off.dy + off.vy));
-          return [nx + off.dx, ny + off.dy] as [number, number];
-        })
-      );
-
-      // Lines first — circles paint over the endpoints
-      for (let tri = 0; tri < 3; tri++) {
-        const pts = allPts[tri];
-        ctx.beginPath();
-        ctx.moveTo(pts[0][0], pts[0][1]);
-        ctx.lineTo(pts[1][0], pts[1][1]);
-        ctx.lineTo(pts[2][0], pts[2][1]);
-        ctx.closePath();
-        ctx.strokeStyle = `rgba(23, 23, 23, ${(lineOpacity * 0.9).toFixed(3)})`;
-        ctx.lineWidth   = lineW;
-        ctx.stroke();
-      }
-
-      // Solid circles on top — always visible, mask line endpoints
-      for (let tri = 0; tri < 3; tri++) {
-        for (const [x, y] of allPts[tri]) {
-          ctx.beginPath();
-          ctx.arc(x, y, circleR, 0, Math.PI * 2);
-          ctx.fillStyle = '#171717';
-          ctx.fill();
-        }
-      }
-    }
-
-    let started = false;
-    function loop(ts: number) {
-      draw(ts);
-      requestAnimationFrame(loop);
-    }
-
-    canvas.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect();
-      mouseX = e.clientX - r.left;
-      mouseY = e.clientY - r.top;
-    });
-    canvas.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
-
-    const ro = new ResizeObserver(() => {
-      resize();
-      if (!started) {
-        started = true;
-        requestAnimationFrame(loop);
-      }
-    });
-    ro.observe(canvas.parentElement as Element);
-  }
-
   // ── Scroll reveal ──────────────────────────────────────────────────────────
   const observer = new IntersectionObserver(
     (entries) => {
@@ -451,22 +328,73 @@ const services = [
     line-height: 1.5;
   }
 
-  /* ── Canvas ── */
-  .hero-canvas-wrap {
+  /* ── Hero composition (static base + one-time bar-grow accent) ── */
+  .hero-composition {
     position: relative;
     aspect-ratio: 1;
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     justify-self: center;
-    cursor: crosshair;
   }
 
-  #hero-canvas {
-    display: block;
+  .comp-blob {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    border-radius: 50%;
+    filter: blur(34px);
+    opacity: 0.5;
+    animation: blob-drift 14s ease-in-out infinite alternate;
+  }
+  .comp-blob--1 {
+    width: 65%; height: 65%; top: -8%; right: -6%;
+    background: radial-gradient(circle, var(--color-coral), transparent 70%);
+  }
+  .comp-blob--2 {
+    width: 60%; height: 60%; bottom: -6%; left: -8%;
+    background: radial-gradient(circle, var(--color-indigo), transparent 70%);
+    animation-delay: -7s;
+  }
+
+  .comp-card {
+    position: absolute;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(28, 28, 28, 0.18);
+  }
+  .comp-card--back {
+    inset: 16% 10% 20% 18%;
+    background: var(--grad-tide);
+    transform: rotate(-6deg);
+  }
+  .comp-card--front {
+    inset: 22% 14% 14% 8%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: flex-end;
+    gap: 8%;
+    padding: 14% 9% 11%;
+  }
+  .comp-bar {
+    flex: 1;
+    height: var(--h);
+    border-radius: 6px 6px 3px 3px;
+    background: var(--grad-tide);
+    opacity: 0.85;
+    transform-origin: bottom;
+    animation: bar-grow 0.7s var(--ease-standard) backwards;
+    animation-delay: calc(var(--i) * 110ms + 200ms);
+  }
+  .comp-bar--accent {
+    background: var(--grad-sunrise);
+    opacity: 1;
+  }
+
+  @keyframes bar-grow {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+  }
+  @keyframes blob-drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(4%, -5%) scale(1.06); }
   }
 
   /* ── Proof strip ── */
@@ -527,7 +455,7 @@ const services = [
 
   /* ── Services section ── */
   .services-section {
-    background: rgba(255, 255, 255, 0.55);
+    background: linear-gradient(180deg, var(--color-tint), var(--color-bg));
   }
 
   .section-heading-block {
@@ -654,7 +582,7 @@ const services = [
 
   /* ── Knowledge section ── */
   .knowledge-section {
-    background: rgba(255, 255, 255, 0.55);
+    background: linear-gradient(180deg, var(--color-bg), var(--color-tint));
   }
 
   .knowledge-header {
@@ -730,12 +658,11 @@ const services = [
     .hero-inner {
       grid-template-columns: 1fr;
     }
-    .hero-canvas-wrap {
-      order: -1; /* canvas above text on mobile */
+    .hero-composition {
+      order: -1; /* composition above text on mobile */
       max-width: 280px;
       margin: 0 auto;
     }
-    .canvas-hint { bottom: -1.5rem; }
   }
 
   @media (max-width: 640px) {

@@ -17,12 +17,14 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
   <section class="page-hero section">
     <div class="container">
       <p class="eyebrow">Knowledge</p>
-      <h1 class="page-hero__title">Practical insights</h1>
+      <h1 class="page-hero__title">Practical <span class="grad-text">insights</span></h1>
       <p class="page-hero__lead">
         Short pieces for teams making real decisions.
       </p>
     </div>
   </section>
+
+  <div class="band band--sunrise" aria-hidden="true"></div>
 
   <!-- Articles -->
   <section class="section articles-section">
@@ -49,6 +51,8 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
       </div>
     </div>
   </section>
+
+  <div class="band band--tide" aria-hidden="true"></div>
 
   <!-- Prompt to suggest topics -->
   <section class="section suggest-section">
@@ -118,7 +122,7 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
   }
 
   .suggest-section {
-    background: rgba(255, 255, 255, 0.35);
+    background: linear-gradient(180deg, var(--color-tint), var(--color-bg));
   }
 
   .suggest-inner {

@@ -43,8 +43,8 @@ composition cards) and `90deg` (left→right) for the thin section bands.
 
 | Name | Stops | Token | Where it appears |
 |------|-------|-------|------------------|
-| **Sunrise** | Gold `#D9AA52` → Coral `#EC6A4C` | `--grad-sunrise` | Hero headline accent, first section band, chart accent bar |
-| **Tide** | Teal `#1F8A8A` → Indigo `#4F46E5` | `--grad-tide` | Composition cards/bars, mid-page section bands |
+| **Sunrise** | Gold `#D9AA52` → Coral `#EC6A4C` | `--grad-sunrise` | Hero headline accent, first section band; the hero agent-pulse uses Coral |
+| **Tide** | Teal `#1F8A8A` → Indigo `#4F46E5` | `--grad-tide` | Composition cards, hero workflow node graph (edges + agent node), mid-page section bands |
 | **Dusk** | Indigo `#4F46E5` → Ink `#1C1C1C` | `--grad-dusk` | Band leading into the dark CTA "anchor" sections |
 
 CSS form (for reference):

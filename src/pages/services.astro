@@ -3,39 +3,38 @@ import Layout from '../layouts/Layout.astro';
 
 const buckets = [
   {
-    id: 'strategy',
+    id: 'automation',
     number: '01',
-    title: 'Data & AI Strategy',
+    title: 'Workflow Automation',
     intro:
-      "Frame the right problem before reaching for a solution. Not every challenge calls for AI—sometimes better structure, a clearer process, or a simpler tool is the right answer. This work starts by understanding what your team is actually trying to accomplish, who will use the output, and what \"working well\" means in practice.",
-    bestFor: 'Teams unsure whether AI is even the right answer, evaluating tools, or frustrated by solutions that don\'t fit their workflow',
-    typicalDeliverable: 'A written scope + 60-minute walkthrough of your best options',
+      "The repetitive, multi-step work that eats your week—intake, triage, routing, follow-ups, data entry, record cleanup—handled end to end. I automate the process itself, not just a single task, and put human approval gates at the moments that actually need judgment. The result is a system your team can trust, audit, and keep running without me.",
+    bestFor: 'Teams doing the same multi-step process by hand every week—copy-paste between systems, manual tagging, repetitive data entry',
+    typicalDeliverable: 'One working automation for your highest-friction process, with human control gates',
     services: [
-      'User needs assessment and stakeholder interviews to ground every recommendation in real workflows',
-      'Analysis of alternatives (e.g, AI, automation, or process change) so the solution fits the actual problem',
-      'Problem framing and scoping for data & automation projects',
-      'AI agent design grounded in your domain, documents, and policies',
-      'Semantic search across records, websites, and small databases',
-      'Information architecture for archives, programs, and complex content',
-      'Evaluation design: defining what "good" looks like before anything is built',
-      'Technical AI program management augmentation for your team',
+      'End-to-end automation of a multi-step process, from trigger to finished output',
+      'Human-in-the-loop control gates so people approve the decisions that matter',
+      'AI-powered tagging, summarizing, and routing for incoming information',
+      'Form-to-spreadsheet and form-to-CRM integrations',
+      'Data cleanup and pipelines that keep key fields consistent over time',
+      'Integration with the systems you already run—email, spreadsheets, CRMs, and documents',
+      'Version control, logging, and simple testing so changes are safe to deploy',
     ],
   },
   {
-    id: 'agents',
+    id: 'search',
     number: '02',
-    title: 'Agentic Workflows & AI Assistants',
+    title: 'Search & Knowledge Retrieval',
     intro:
-      "AI that does more than answer—it acts. I help you design agentic workflows where AI assistants carry out multi-step business processes on your behalf, pausing for a human at the moments that actually need judgment. Using frameworks like Hermes and similar agent toolkits, I wire these agents into the tools your team already uses.",
-    bestFor: 'Teams buried in repetitive, multi-step processes—intake, triage, follow-ups, research—that a well-scoped AI assistant could carry out',
-    typicalDeliverable: 'One agentic workflow that automates a single business process end to end, with human approval gates',
+      "Most search fails because it only matches words. Hybrid search combines keyword precision with semantic understanding, so people find what they meant, not just what they typed—across records, documents, archives, and small databases at the same time. If your organization is data-rich but answer-poor, this is usually the highest-leverage thing we can build.",
+    bestFor: 'Organizations sitting on records, documents, or archives that nobody can find anything in—especially where structured data and free text live side by side',
+    typicalDeliverable: 'A working hybrid search over one real collection, with evaluation showing what it retrieves and what it misses',
     services: [
-      'Custom AI assistants that handle multi-step tasks, not just one-off questions',
-      'Agentic workflows built on Hermes or other agent frameworks, scoped to your process',
-      'Human-in-the-loop control gates so people approve the decisions that matter',
-      'Dynamic workflows that adapt to inputs, route work, and call the right tool for each step',
-      'Integration with the systems you already run—email, spreadsheets, CRMs, and documents',
-      'Guardrails, logging, and evaluation so you can trust and audit what the agent does',
+      'Hybrid search combining keyword (lexical) and semantic (vector) retrieval',
+      'Search across structured and unstructured data together—spreadsheets, documents, and records',
+      'Searchable archives for collections, programs, and historical material',
+      'Retrieval grounded in your own content, so answers cite real sources',
+      'Information architecture and metadata design that makes retrieval work in the first place',
+      'Retrieval evaluation: measuring what it actually finds before you trust it',
     ],
   },
   {
@@ -55,19 +54,21 @@ const buckets = [
     ],
   },
   {
-    id: 'automation',
+    id: 'strategy',
     number: '04',
-    title: 'Automation & Data Engineering',
+    title: 'Data & AI Strategy',
     intro:
-      'Reduce copy-paste work and make your records reliable. AI-driven automation wrapped in human-designed control gates... so you save time without giving up oversight.',
-    bestFor: 'Teams doing repetitive tagging, data entry, or record cleanup by hand',
-    typicalDeliverable: 'A working automation for one high-friction process',
+      "Frame the right problem before reaching for a solution. Not every challenge calls for AI—sometimes better structure, a clearer process, or a simpler tool is the right answer, and I'll tell you when that's the case. This work starts by understanding what your team is actually trying to accomplish, who will use the output, and what \"working well\" means in practice.",
+    bestFor: 'Teams unsure whether AI is even the right answer, evaluating tools or vendors, or frustrated by solutions that don\'t fit their workflow',
+    typicalDeliverable: 'A written scope + 60-minute walkthrough of your best options',
     services: [
-      'AI-powered tagging, summarizing, and routing for incoming information',
-      'Data cleanup and pipelines that keep key fields consistent over time',
-      'Form-to-spreadsheet and form-to-CRM integrations',
-      'Lightweight CRM setup for small organizations',
-      'Version control and simple testing so changes are safe to deploy',
+      'User needs assessment and stakeholder interviews to ground every recommendation in real workflows',
+      'Analysis of alternatives (AI, automation, or plain process change) so the solution fits the actual problem',
+      'Problem framing and scoping for data & automation projects',
+      'Information architecture for archives, programs, and complex content',
+      'Evaluation design: defining what "good" looks like before anything is built',
+      'A second opinion as you review proposals, write statements of work, or weigh vendors',
+      'Technical AI program management augmentation for your team',
     ],
   },
   {
@@ -75,34 +76,51 @@ const buckets = [
     number: '05',
     title: 'Connected Web Presence',
     intro:
-      'Your website as a front door to your data and services is not a silo. Sites that connect to your internal records so visitors can search, browse, and submit without staff re-typing everything.',
+      'Your website as a front door to your data and services, not a silo. Sites that connect to your internal records so visitors can search, browse, and submit without staff re-typing everything.',
     bestFor: 'Organizations whose website is hard to update or disconnected from their data',
     typicalDeliverable: 'A fast, low-maintenance site with integrated forms and on-page search',
     services: [
       'Fast, low-maintenance sites designed for performance, not platform lock-in',
       'Navigation and content structured around real questions, not your org chart',
       'Web forms that feed clean data into your spreadsheets or tools',
-      'AI-enhanced features: on-page search, summaries, simple Q&A',
+      'On-page search powered by the hybrid retrieval described above',
       'Lightweight integrations so your site, email lists, and dashboards stay in sync',
+    ],
+  },
+  {
+    id: 'agents',
+    number: '06',
+    title: 'Agentic AI — when it’s warranted',
+    intro:
+      "I build agentic AI: assistants that carry out multi-step processes on your behalf, decide which tool to call at each step, and adapt to what they find. I have deep experience here—and it is deliberately the last thing on this list. An agent is the right answer when a process is genuinely open-ended and can't be scripted in advance. Most small-organization problems aren't that; they're better served by a well-built automation and good search, which cost less to run and are far easier to keep working. When your process really does need an agent, you'll get one built with guardrails from the start.",
+    bestFor: "Open-ended, judgment-heavy processes that genuinely can't be handled by a fixed workflow—and where you've already tried the simpler thing",
+    typicalDeliverable: 'One scoped agentic workflow with human approval gates, logging, and an evaluation harness',
+    services: [
+      'An honest read on whether your process actually needs an agent—or a simpler automation',
+      'Custom AI assistants that handle multi-step, open-ended tasks',
+      'Agentic workflows built on Hermes or other agent frameworks, scoped to your process',
+      'Human-in-the-loop control gates so people approve the decisions that matter',
+      'Guardrails, logging, and audit trails so you can see exactly what the agent did',
+      'Evaluation and error analysis so the agent gets better over time, not worse',
     ],
   },
 ];
 
 const pilots = [
   {
-    title: '"Answer my FAQs" pilot',
+    title: '"Automate this one process"',
     description:
-      'A customized AI agent that handles a narrow set of common questions using your documents and website content.',
+      'We pick the multi-step process that costs your team the most hours, and automate it end to end—with a human approval gate where it counts.',
+  },
+  {
+    title: '"Make our records findable"',
+    description:
+      'Hybrid search over one real collection of your documents or records, so people can finally find what they are looking for.',
   },
   {
     title: '"One dashboard that actually helps"',
     description:
       'A focused view for a single program, office, or set of records—built and delivered in weeks.',
-  },
-  {
-    title: '"Untangle this dataset"',
-    description:
-      'A cleanup and structure pass on a messy but important spreadsheet or small database.',
   },
 ];
 ---
@@ -120,24 +138,24 @@ const pilots = [
         <span class="contrast-label">Before</span>
         <span aria-hidden="true"></span>
         <span class="contrast-label">After</span>
+        <span class="contrast-before">Copy-paste work</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Automated workflows</span>
+        <span class="contrast-before">Buried records</span>
+        <span class="contrast-sep" aria-hidden="true">→</span>
+        <span class="contrast-after">Search that finds it</span>
         <span class="contrast-before">Manual reporting</span>
         <span class="contrast-sep" aria-hidden="true">→</span>
         <span class="contrast-after">Automated views</span>
-        <span class="contrast-before">Buried records</span>
-        <span class="contrast-sep" aria-hidden="true">→</span>
-        <span class="contrast-after">Natural language search</span>
-        <span class="contrast-before">Copy-paste work</span>
-        <span class="contrast-sep" aria-hidden="true">→</span>
-        <span class="contrast-after">Reliable pipelines</span>
         <span class="contrast-before">Decisions by feel</span>
         <span class="contrast-sep" aria-hidden="true">→</span>
         <span class="contrast-after">Data-backed confidence</span>
         <span class="contrast-before">Legacy data silos</span>
         <span class="contrast-sep" aria-hidden="true">→</span>
         <span class="contrast-after">Future-proof systems</span>
-        <span class="contrast-before">Manual, end to end</span>
+        <span class="contrast-before">Tools you outgrow</span>
         <span class="contrast-sep" aria-hidden="true">→</span>
-        <span class="contrast-after">AI-assisted, human-led</span>
+        <span class="contrast-after">Systems you own</span>
       </div>
     </div>
   </section>

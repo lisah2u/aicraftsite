@@ -43,9 +43,25 @@ composition cards) and `90deg` (left→right) for the thin section bands.
 
 | Name | Stops | Token | Where it appears |
 |------|-------|-------|------------------|
-| **Sunrise** | Gold `#D9AA52` → Coral `#EC6A4C` | `--grad-sunrise` | Hero headline accent, first section band; the hero agent-pulse uses Coral |
-| **Tide** | Teal `#1F8A8A` → Indigo `#4F46E5` | `--grad-tide` | Composition cards, hero workflow node graph (edges + agent node), mid-page section bands |
+| **Sunrise** | Gold `#D9AA52` → Coral `#EC6A4C` | `--grad-sunrise` | Hero headline accent (`.grad-text`), first section band |
+| **Tide** | Teal `#1F8A8A` → Indigo `#4F46E5` | `--grad-tide` | Mid-page section bands |
 | **Dusk** | Indigo `#4F46E5` → Ink `#1C1C1C` | `--grad-dusk` | Band leading into the dark CTA "anchor" sections |
+
+## Hero backdrop
+
+The homepage hero uses `src/assets/graph-concept.png` — a node-graph illustration — as a
+right-anchored background rather than a foreground graphic.
+
+The artwork ships with a **white** plate, which would read as a pale rectangle against the
+cream page. Two CSS properties do the work of hiding that:
+
+- `mix-blend-mode: multiply` — multiplying the artwork against Cream `#F3EFE6` erases its white
+  background entirely, so the nodes look printed onto the page rather than pasted over it.
+- a horizontal `mask-image` gradient — dissolves the image to nothing before it reaches the
+  text column, which is what keeps headline contrast intact.
+
+If you swap the artwork, keep both: any replacement needs a white or very light background for
+the multiply trick to work, and the mask must still clear the left ~45% of the hero.
 
 CSS form (for reference):
 

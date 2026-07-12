@@ -1,23 +1,27 @@
 # AiCraft
 
-> AiCraft is a micro-consultancy that builds AI, data, and web tools for small businesses, nonprofits, and local government teams. One to two clients at a time, clear scopes, plain language.
+> AiCraft is a micro-consultancy that builds workflow automation, hybrid search, and data tools for small businesses, nonprofits, and local government teams. One to two clients at a time, clear scopes, plain language.
 
 AiCraft is run by a data scientist and designer with 25+ years of experience in AI, NLP, and data engineering — including enterprise-scale and federal-grade AI systems. The practice focuses on small organizations that need real leverage from their data but can't hire a full data department.
+
+AiCraft builds agentic AI, but deliberately does not lead with it. A small organization usually needs a tailored, sustainable solution that is cheap to keep running — most often a well-built workflow automation and high-quality search. Agents are built when a process is genuinely open-ended enough to warrant one.
 
 ## Pages
 
 - [Home](/): Overview of services, process, and recent knowledge articles.
-- [Services](/services): Four service areas — Data & AI Strategy, Dashboards & Decision Tools, Automation & Data Engineering, and Connected Web Presence. Includes fixed-scope pilot engagements.
+- [Services](/services): Six service areas — Workflow Automation, Search & Knowledge Retrieval, Dashboards & Decision Tools, Data & AI Strategy, Connected Web Presence, and Agentic AI. Includes fixed-scope pilot engagements.
 - [Knowledge](/knowledge): Articles on AI, data, and web topics relevant to small organizations.
 - [About](/about): Background on the practice and founder.
 - [Contact](/contact): How to start a project conversation.
 
 ## Services
 
-- **Data & AI Strategy** — Problem framing, information architecture, AI agent design. Identifying the smallest useful solution before building anything.
+- **Workflow Automation** — Repetitive, multi-step processes (intake, triage, routing, follow-ups, data entry) automated end to end, with human approval gates at the decisions that need judgment. The primary offering.
+- **Search & Knowledge Retrieval** — Hybrid search combining keyword (lexical) precision with semantic (vector) understanding, across structured and unstructured data together. Searchable archives, records, and document collections, with retrieval evaluation.
 - **Dashboards & Decision Tools** — Data visualization and reporting tools built around the actual questions an organization needs to answer.
-- **Automation & Data Engineering** — Workflow automation, data cleanup, and integrations with human-validated control gates.
-- **Connected Web Presence** — Modern web frameworks, semantic search, and AI-enhanced features grounded in the client's own content.
+- **Data & AI Strategy** — Problem framing, analysis of alternatives, and information architecture. Identifying the smallest useful solution — including when the answer is not AI at all.
+- **Connected Web Presence** — Modern web frameworks, forms that feed clean data into real systems, and on-page search grounded in the client's own content.
+- **Agentic AI** — Custom AI assistants and agentic workflows (Hermes and similar frameworks) with guardrails, logging, and evaluation. Built when a process genuinely warrants an agent rather than a simpler automation.
 
 ## About this site
 

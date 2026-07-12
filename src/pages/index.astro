@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import KnowledgeCard from '../components/KnowledgeCard.astro';
+import { Image } from 'astro:assets';
+import graphConcept from '../assets/graph-concept.png';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('knowledge', ({ data }) => !data.draft);
@@ -12,43 +14,51 @@ const recentPosts = allPosts
 const services = [
   {
     number: '01',
-    title: 'Data & AI Strategy',
+    title: 'Workflow Automation',
     description:
-      "Frame the right problem before touching code. I help you identify what you actually need—whether that's a searchable archive, an AI assistant, or a cleaner dataset—and sketch the smallest useful solution.",
-    tags: ['Information architecture', 'AI agent design', 'Problem framing'],
-    href: '/services#strategy',
+      'The repetitive, multi-step work that eats your week—intake, routing, follow-ups, data entry—handled end to end, with human approval gates at the moments that actually need judgment.',
+    tags: ['Process automation', 'Human-in-the-loop', 'Integrations'],
+    href: '/services#automation',
   },
   {
     number: '02',
-    title: 'Agentic Workflows & AI Assistants',
+    title: 'Search & Knowledge Retrieval',
     description:
-      'AI that acts, not just answers. I design AI agents and dynamic workflows—using frameworks like Hermes—that carry out multi-step business processes, with human checkpoints where they count.',
-    tags: ['Agentic frameworks', 'Dynamic workflows', 'Human-in-the-loop'],
-    href: '/services#agents',
+      "Hybrid search that combines keyword precision with semantic understanding, so people find what they meant—not just what they typed. Built for organizations whose records span spreadsheets, documents, and archives.",
+    tags: ['Hybrid search', 'Semantic retrieval', 'Structured + unstructured'],
+    href: '/services#search',
   },
   {
     number: '03',
     title: 'Dashboards & Decision Tools',
     description:
-      'Design of  dashboards built around actual questions so answers are at your fingertips.',
+      'Focused views built around the questions your team actually asks, replacing hours of manual spreadsheet reporting each week.',
     tags: ['Data visualization', 'Grants & programs', 'Visual reporting'],
     href: '/services#dashboards',
   },
   {
     number: '04',
-    title: 'Automation & Data Engineering',
+    title: 'Data & AI Strategy',
     description:
-      'Reduce copy-paste and disarticulated data. Supported with AI-driven automation with human-validated control gates so you save time without losing oversight.',
-    tags: ['Workflow automation', 'Data cleanup', 'Integrations'],
-    href: '/services#automation',
+      "Frame the right problem before touching code. Sometimes the answer is AI. Often it's better structure, a clearer process, or a simpler tool—and I'll tell you which.",
+    tags: ['Problem framing', 'Analysis of alternatives', 'Information architecture'],
+    href: '/services#strategy',
   },
   {
     number: '05',
     title: 'Connected Web Presence',
     description:
-      'Your website as a live data application and not a static brochure. Forms that write to your systems, user search that answers real questions, and AI-enhanced features grounded in your own content.',
-    tags: ['Modern Web Frameworks', 'Semantic search', 'Content architecture'],
+      'Your website as a live data application, not a static brochure. Forms that write to your systems, and features grounded in your own content.',
+    tags: ['Modern web frameworks', 'Forms & integrations', 'Content architecture'],
     href: '/services#web',
+  },
+  {
+    number: '06',
+    title: 'Agentic AI — when it’s warranted',
+    description:
+      'I build AI agents that carry out multi-step processes on your behalf. It just isn’t the first thing I reach for. When a process genuinely needs one, you get an agent designed with guardrails, logging, and evaluation.',
+    tags: ['Agent frameworks', 'Guardrails & logging', 'Evaluation'],
+    href: '/services#agents',
   },
 ];
 ---
@@ -59,70 +69,32 @@ const services = [
 >
   <!-- Hero -->
   <section class="hero-section">
+    <!-- Node-graph artwork, right-anchored and dissolved into the cream.
+         multiply drops the artwork's white background against --color-bg. -->
+    <div class="hero-backdrop" aria-hidden="true">
+      <Image
+        src={graphConcept}
+        alt=""
+        widths={[600, 900, 1200]}
+        sizes="(max-width: 720px) 100vw, 55vw"
+        quality={70}
+        loading="eager"
+        class="hero-backdrop__img"
+      />
+    </div>
+
     <div class="container hero-inner">
       <div class="hero-text">
-        <h1 class="sr-only">Data & AI solutions for small organizations — AiCraft</h1>
         <p class="eyebrow">Data & AI consultancy</p>
+        <h1 class="hero-title">Automate the work that eats your week.</h1>
         <p class="hero-subtitle">
-          I help small businesses, local governments, and nonprofits design <span class="grad-text">AI agents and dynamic workflows</span> that automate the busywork&mdash;while keeping people in control of the decisions that matter.
+          I help small businesses, local governments, and nonprofits <span class="grad-text">automate repetitive work</span>&mdash;and actually find what&rsquo;s buried in their records. Tailored to how your team already works, and built so you can keep it running.
         </p>
         <div class="hero-actions">
           <a href="/contact" class="button button--primary">Talk about your idea</a>
           <a href="/services" class="button button--secondary">Explore services</a>
         </div>
-        <p class="hero-subtext">A short call to see which workflow an AI agent could take off your plate.</p>
-      </div>
-
-      <!-- Static gradient composition holding an agentic-workflow node graph -->
-      <div class="hero-composition" aria-hidden="true">
-        <div class="comp-blob comp-blob--1"></div>
-        <div class="comp-blob comp-blob--2"></div>
-        <div class="comp-card comp-card--back"></div>
-        <div class="comp-card comp-card--front">
-          <svg class="comp-graph" viewBox="0 0 288 200" role="presentation" focusable="false">
-            <defs>
-              <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" class="stop-teal" />
-                <stop offset="1" class="stop-indigo" />
-              </linearGradient>
-              <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" class="stop-teal" />
-                <stop offset="1" class="stop-indigo" />
-              </linearGradient>
-            </defs>
-
-            <!-- edges: work flowing trigger → agent → tools → human gate -->
-            <path class="comp-edge" d="M46,84 L87,84" />
-            <path class="comp-edge comp-edge--2" d="M121,84 C152,84 156,38 170,38" />
-            <path class="comp-edge comp-edge--3" d="M121,84 C152,84 156,130 170,130" />
-            <path class="comp-edge comp-edge--4" d="M194,38 C224,38 222,84 228,84" />
-            <path class="comp-edge comp-edge--5" d="M194,130 C224,130 222,84 228,84" />
-
-            <!-- trigger -->
-            <circle class="comp-node" cx="34" cy="84" r="12" />
-            <circle class="comp-node-dot" cx="34" cy="84" r="3.5" />
-            <text class="comp-label" x="34" y="112">Request</text>
-
-            <!-- tool / data nodes the agent calls -->
-            <circle class="comp-node" cx="182" cy="38" r="12" />
-            <circle class="comp-node-dot" cx="182" cy="38" r="3.5" />
-            <text class="comp-label" x="182" y="18">Search</text>
-            <circle class="comp-node" cx="182" cy="130" r="12" />
-            <circle class="comp-node-dot" cx="182" cy="130" r="3.5" />
-            <text class="comp-label" x="182" y="156">Data</text>
-
-            <!-- central agent (pulsing) -->
-            <circle class="comp-pulse" cx="104" cy="84" r="18" />
-            <circle class="comp-node comp-node--agent" cx="104" cy="84" r="17" />
-            <circle class="comp-agent-dot" cx="104" cy="84" r="4.5" />
-            <text class="comp-label comp-label--agent" x="104" y="118">AI agent</text>
-
-            <!-- human-in-the-loop gate -->
-            <circle class="comp-node comp-node--human" cx="240" cy="84" r="14" />
-            <path class="comp-check" d="M234,84 l4,4 l7,-8" />
-            <text class="comp-label comp-label--human" x="254" y="116">You approve</text>
-          </svg>
-        </div>
+        <p class="hero-subtext">A short call to find the one workflow worth automating first.</p>
       </div>
     </div>
   </section>
@@ -161,7 +133,15 @@ const services = [
         </h2>
         <p class="audience-body">
           If your operations live in spreadsheets, inboxes, and a simple website—but modern data,
-          AI, and automation feel out of reach—you're exactly who I work with. I build lightweight tools that plug into your existing systems so you get real leverage without big platforms or long contracts.
+          AI, and automation feel out of reach—you're exactly who I work with. I build lightweight
+          tools that plug into your existing systems so you get real leverage without big platforms
+          or long contracts.
+        </p>
+        <p class="audience-body audience-body--stance">
+          I build agentic AI. It's just rarely the first thing I reach for. A small team needs a
+          solution that's tailored, sustainable, and cheap to keep running—usually that means a
+          well-built automation and search that actually finds things. When a process genuinely
+          needs an agent, I build that too.
         </p>
       </div>
     </div>
@@ -182,7 +162,7 @@ const services = [
       </div>
       <div class="service-grid">
         {services.map((service, i) => (
-          <div class={`reveal reveal--delay-${i}${i === 0 ? ' service-grid__featured' : ''}`}>
+          <div class={`reveal reveal--delay-${i}${i === 0 ? ' service-grid__featured' : ''}${i === services.length - 1 ? ' service-grid__aside' : ''}`}>
             <ServiceCard {...service} />
           </div>
         ))}
@@ -303,28 +283,39 @@ const services = [
 </script>
 
 <style>
-  /* ── Screen-reader only ── */
-  .sr-only {
-    position: absolute;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-    border: 0;
-  }
-
   /* ── Hero ── */
   .hero-section {
+    position: relative;
+    overflow: hidden;
     padding-block: clamp(56px, 10vw, 120px);
     border-bottom: 1px solid var(--color-border);
   }
 
+  /* Node-graph artwork bleeding off the right edge.
+     multiply against the cream bg erases the artwork's white plate;
+     the mask dissolves it before it reaches the text column. */
+  .hero-backdrop {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 58%;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.6;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.3) 68%, rgba(0, 0, 0, 1) 100%);
+    mask-image: linear-gradient(to right, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.3) 68%, rgba(0, 0, 0, 1) 100%);
+  }
+
+  .hero-backdrop__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+  }
+
   .hero-inner {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 3.5rem;
-    align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-text {
@@ -332,6 +323,7 @@ const services = [
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
+    max-width: 62ch;
   }
 
   /* Eyebrow as an accent badge */
@@ -349,15 +341,23 @@ const services = [
     letter-spacing: 0.05em;
   }
 
+  .hero-title {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+    max-width: 15ch;
+  }
+
   .hero-subtitle {
     margin: 0 0 2.25rem;
-    font-family: var(--font-display);
-    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-    font-weight: 500;
-    color: var(--color-ink);
-    line-height: 1.45;
-    letter-spacing: -0.02em;
-    max-width: 26ch;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    font-weight: 400;
+    color: var(--color-ink-soft);
+    line-height: 1.65;
+    max-width: 52ch;
   }
 
   .hero-actions {
@@ -372,144 +372,6 @@ const services = [
     font-size: 0.875rem;
     color: var(--color-ink-soft);
     line-height: 1.5;
-  }
-
-  /* ── Hero composition (static base + one-time bar-grow accent) ── */
-  .hero-composition {
-    position: relative;
-    aspect-ratio: 1;
-    width: 100%;
-    max-width: 400px;
-    justify-self: center;
-  }
-
-  .comp-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(34px);
-    opacity: 0.5;
-    animation: blob-drift 14s ease-in-out infinite alternate;
-  }
-  .comp-blob--1 {
-    width: 65%; height: 65%; top: -8%; right: -6%;
-    background: radial-gradient(circle, var(--color-coral), transparent 70%);
-  }
-  .comp-blob--2 {
-    width: 60%; height: 60%; bottom: -6%; left: -8%;
-    background: radial-gradient(circle, var(--color-indigo), transparent 70%);
-    animation-delay: -7s;
-  }
-
-  .comp-card {
-    position: absolute;
-    border-radius: 18px;
-    box-shadow: 0 24px 60px rgba(28, 28, 28, 0.18);
-  }
-  .comp-card--back {
-    inset: 16% 10% 20% 18%;
-    background: var(--grad-tide);
-    transform: rotate(-6deg);
-  }
-  .comp-card--front {
-    inset: 20% 8% 16% 6%;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    display: grid;
-    place-items: center;
-    padding: 9%;
-  }
-
-  /* ── Agentic workflow node graph ── */
-  .comp-graph {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-
-  /* gradient stops (var() resolves in CSS, not in SVG attributes) */
-  .stop-teal   { stop-color: var(--color-teal); }
-  .stop-indigo { stop-color: var(--color-indigo); }
-
-  /* edges: dashed strokes with "data" flowing along the path */
-  .comp-edge {
-    fill: none;
-    stroke: url(#edgeGrad);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-dasharray: 5 7;
-    opacity: 0.85;
-    animation: edge-flow 2.4s linear infinite;
-  }
-  .comp-edge--2 { animation-delay: -0.5s; }
-  .comp-edge--3 { animation-delay: -1s; }
-  .comp-edge--4 { animation-delay: -1.5s; }
-  .comp-edge--5 { animation-delay: -2s; }
-
-  @keyframes edge-flow {
-    to { stroke-dashoffset: -24; }
-  }
-
-  /* nodes */
-  .comp-node {
-    fill: var(--color-surface);
-    stroke: var(--color-indigo);
-    stroke-width: 2;
-  }
-  .comp-node-dot { fill: var(--color-teal); }
-
-  .comp-node--agent {
-    fill: url(#nodeGrad);
-    stroke: none;
-  }
-  .comp-agent-dot { fill: var(--color-surface); }
-
-  .comp-node--human {
-    fill: var(--color-accent);
-    stroke: none;
-  }
-  .comp-check {
-    fill: none;
-    stroke: var(--color-panel-dark);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* node labels — carry the trigger → agent → tools → human story */
-  .comp-label {
-    fill: var(--color-ink-soft);
-    font-family: var(--font-sans);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    text-anchor: middle;
-  }
-  .comp-label--agent {
-    fill: var(--color-ink);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 9.5px;
-  }
-  .comp-label--human { fill: var(--color-ink); }
-
-  /* pulsing ring around the central agent = "the agent is working" */
-  .comp-pulse {
-    fill: none;
-    stroke: var(--color-coral);
-    stroke-width: 2;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: node-pulse 2.4s var(--ease-standard) infinite;
-  }
-  @keyframes node-pulse {
-    0%   { transform: scale(0.75); opacity: 0.75; }
-    70%  { transform: scale(1.5); opacity: 0; }
-    100% { transform: scale(1.5); opacity: 0; }
-  }
-
-  @keyframes blob-drift {
-    from { transform: translate(0, 0) scale(1); }
-    to   { transform: translate(4%, -5%) scale(1.06); }
   }
 
   /* ── Proof strip ── */
@@ -568,6 +430,14 @@ const services = [
     line-height: 1.7;
   }
 
+  /* the "I build agents, I just don't lead with them" position */
+  .audience-body--stance {
+    margin-top: 1.5rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--color-accent);
+    color: var(--color-ink);
+  }
+
   /* ── Services section ── */
   .services-section {
     background: linear-gradient(180deg, var(--color-tint), var(--color-bg));
@@ -612,6 +482,21 @@ const services = [
   }
 
   .service-grid__featured :global(.service-card__description) {
+    max-width: 64ch;
+  }
+
+  /* Agentic AI spans the last row, but deliberately reads quieter than the
+     rest — it's the capability we hold in reserve, not the one we sell. */
+  .service-grid__aside {
+    grid-column: 1 / -1;
+  }
+
+  .service-grid__aside :global(.service-card) {
+    background: transparent;
+    border-style: dashed;
+  }
+
+  .service-grid__aside :global(.service-card__description) {
     max-width: 64ch;
   }
 
@@ -769,14 +654,23 @@ const services = [
     .process-inner     { grid-template-columns: 1fr; gap: 2.5rem; }
   }
 
-  @media (max-width: 720px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
+  /* Laptop range: the text column and the artwork start to compete for the
+     same space, so pull the artwork back rather than let it crowd the copy. */
+  @media (max-width: 1100px) {
+    .hero-backdrop {
+      width: 46%;
+      opacity: 0.4;
     }
-    .hero-composition {
-      order: -1; /* composition above text on mobile */
-      max-width: 280px;
-      margin: 0 auto;
+  }
+
+  /* Text reflows to full width here, so the artwork has to recede
+     rather than sit underneath the headline. */
+  @media (max-width: 720px) {
+    .hero-backdrop {
+      width: 100%;
+      opacity: 0.15;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 1) 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 1) 100%);
     }
   }
 

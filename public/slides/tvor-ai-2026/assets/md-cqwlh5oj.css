@@ -1,0 +1,16 @@
+
+.cg-key text[data-v-2ffa8174] { font-size: 15px; fill: #5F5A53;
+}
+.cg-turn[data-v-2ffa8174] { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; fill: #171717;
+}
+.cg-in[data-v-2ffa8174] { font-size: 14px; fill: #171717;
+}
+.cg-note[data-v-2ffa8174] { font-size: 15px; fill: #5F5A53;
+}
+.cg-step[data-v-2ffa8174] { transition: opacity 0.4s;
+}
+.cg-hidden[data-v-2ffa8174] { opacity: 0;
+}
+
+h2[data-v-997c200d] { margin-bottom: 1.5rem !important;
+}

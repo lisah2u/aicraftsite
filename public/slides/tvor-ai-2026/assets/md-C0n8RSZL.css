@@ -1,0 +1,13 @@
+
+h2[data-v-ecbb4498] { margin-bottom: 2rem !important;
+}
+.breach[data-v-ecbb4498] { background: rgba(255,255,255,0.7); border-left: 4px solid #EC6A4C; border-radius: 0.5rem; padding: 0.4rem 1rem;
+}
+.breach-num[data-v-ecbb4498] { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; color: #EC6A4C; line-height: 1.2;
+}
+.breach-num span[data-v-ecbb4498] { font-size: 1rem; color: #5F5A53; font-weight: 500;
+}
+.breach-name[data-v-ecbb4498] { font-weight: 600;
+}
+.breach-note[data-v-ecbb4498] { font-size: 0.8rem; color: #5F5A53;
+}

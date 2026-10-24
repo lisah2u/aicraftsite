@@ -1,0 +1,1 @@
+import{E as e,V as t,x as n}from"./modules/shiki-hE9vItu9.js";import{tt as r}from"./index-CkbjL5q2.js";var i=e({__name:`PublicImage`,props:{src:{}},setup(e){let{$slidev:i,$nav:a,$clicksContext:o,$clicks:s,$page:c,$renderContext:l,$frontmatter:u}=r(),d=`/slides/tvor-ai-2026/`+e.src.replace(/^\//,``);return(e,r)=>(t(),n(`img`,{src:d}))}});export{i as t};

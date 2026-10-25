@@ -1,0 +1,10 @@
+
+h2[data-v-1b2f3c88] { margin-bottom: 0.5rem !important;
+}
+.pane-title[data-v-1b2f3c88] { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.25rem; line-height: 1.2;
+}
+.pane-sub[data-v-1b2f3c88] { font-size: 0.9rem; color: #5F5A53; margin-bottom: 0.25rem;
+}
+/* The 300×400 diagrams overflow the slide at full column width; cap the height (they scale, centered). */
+.grid svg[data-v-1b2f3c88] { max-height: 20rem;
+}
